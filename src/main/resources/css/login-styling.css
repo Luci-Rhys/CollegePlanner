@@ -1,0 +1,187 @@
+
+/*
+Panes
+*/
+
+.pane-size {
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+}
+
+.top-pane {
+    -fx-background-color: #7FFF00;
+}
+
+.bottom-pane {
+    -fx-background-color: #318CE7;
+}
+
+.left-pane {
+    -fx-background-color: linear-gradient(to bottom, #7FFF00 5%, #318CE7 90%);
+}
+
+.right-pane {
+    -fx-background-color: linear-gradient(to bottom, #7FFF00 5%, #318CE7 90%);
+}
+
+.center-pane {
+    -fx-spacing: 20px;
+}
+
+.right-pane-style {
+    -fx-padding: 10px 0px 0px 0px;
+}
+
+.login-pane {
+    -fx-background-color: white;
+}
+
+/*
+Containers
+*/
+
+.login-btn-cont {
+    -fx-padding: 10px 0px 10px 105px;
+}
+
+.create-account {
+    -fx-padding: 10px 0px 0px 75px;
+}
+
+.hz-left-divider-cont {
+    -fx-padding: 10px 0px 0px 0px;
+}
+
+.hz-right-divider-cont {
+    -fx-padding: 10px 0px 0px 0px;
+}
+
+
+.pw-and-forgotpw-cont {
+    -fx-spacing: 80px;
+}
+
+.un-comp-container {
+    -fx-padding: 0px 0px 25px 60px;
+}
+
+.pw-comp-container {
+    -fx-padding: 0px 0px 10px 60px;
+}
+
+.sepCont {
+    -fx-padding: 0px 0px 0px 30px;
+}
+
+
+.power-btn-cont {
+    -fx-padding: 160px 0px 0px 10px;
+}
+
+
+/*
+Buttons
+*/
+
+Button {
+    -fx-background-radius: 15px;
+}
+
+Button:hover {
+    -fx-cursor: hand;
+}
+
+.newAcctBtn {
+    -fx-background-radius: 30px;
+    -fx-background-color: #0047AB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+.login-button {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30px;
+    -fx-padding: 7px 50px;
+    -fx-background-color: #66FF00;
+    -fx-text-fill: white;
+}
+
+.forgot-pw {
+    -fx-text-fill: blue;
+    -fx-padding: 0px;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-font-style: italic;
+}
+
+.forgot-pw:hover {
+    -fx-underline: true;
+}
+
+.power-btn {
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+}
+
+
+/*
+Labels
+*/
+
+.sign-in-label {
+    -fx-padding: 10px 0px 25px 15px;
+    -fx-font-size: 29px;
+    -fx-font-weight: 600;
+    -fx-font-family: Georgia;
+}
+
+.field-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.incorrect-label {
+    -fx-text-fill: red;
+    -fx-font-size: 14;
+    -fx-padding: 20px;
+    -fx-font-weight: 700;
+}
+
+/*
+Fields
+*/
+
+TextField, PasswordField {
+    -fx-background-radius: 30px;
+    -fx-max-width: 250px;
+    -fx-max-height: 55px;
+    -fx-font-size: 18px;
+    -fx-font-style: italic;
+}
+
+.required-field, .unequal-field {
+    -fx-border-color: red;
+    -fx-border-width: 3px;
+    -fx-border-radius: 30px;
+}
+
+
+.txtFldsAndBtns {
+    -fx-padding: 0px 0px 0px, 120px;
+}
+
+
+.logo-style {
+    -fx-padding: 70px 0px 0px 20px;
+}
+
+/*Separators*/
+.ver-divider {
+    -fx-pref-height: 400px;
+}
+
+.horizontal-divider {
+    -fx-min-width: 150px;
+}
