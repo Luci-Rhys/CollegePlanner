@@ -43,7 +43,7 @@ public class Login extends Window {
         //Pane initialization
         top = new Region();
         left = new Region();
-        loginWindow = createLoginPane(loginStage);
+        loginWindow = createLoginPane();
         right = new Region();
         bottom = bottomPane();
         loginWindowCont = new StackPane(loginWindow);
@@ -81,7 +81,7 @@ public class Login extends Window {
     }
 
     //Creates the Pane for the login window
-    private StackPane createLoginPane(Stage loginStage) {
+    private StackPane createLoginPane() {
         StackPane loginWindow;
         Label signIn, username, password, orSeparator, incorrect;
         Button createNewAcct, login, forgotPW;
@@ -93,7 +93,7 @@ public class Login extends Window {
         loginWindow = new StackPane();
 
         //Label Initializations
-        signIn = new Label("Sign in to your CP planner");
+        signIn = new Label("Sign in to your CP account");
         username = new Label("Username/Email");
         password = new Label("Password");
         orSeparator = new Label("or");
@@ -103,7 +103,7 @@ public class Login extends Window {
         createNewAcct = new Button("Create New Account");
 
         login = new Button("Login");
-        forgotPW = new Button();
+        forgotPW = new Button("Forgot Password?");
 
         //Logo initialization
         Image logo = new Image(getClass().getResourceAsStream("/images/training.png")); //temp placeholder, will be updated
@@ -172,6 +172,7 @@ public class Login extends Window {
         //Buttons
         linkStyle(login, "login-button");
         linkStyle(createNewAcct, "newAcctBtn");
+        linkStyle(forgotPW, "forgot-pw");
 
         //Labels
         linkStyle(signInLabel, "sign-in-label");
@@ -181,6 +182,7 @@ public class Login extends Window {
 
         //Containers
         linkStyle(centerPaneCnt, "center-pane");
+        linkStyle(loginWinCont, "login-pane");
         linkStyle(txtFldsAndBtns, "txtFldsAndBtns");
         linkStyle(imageCont, "logo-style");
         linkStyle(rightPaneCnt, "right-pane-style");
@@ -192,6 +194,7 @@ public class Login extends Window {
         linkStyle(loginBtnCont, "login-btn-cont");
         linkStyle(sepAndLbl, "sepCont");
         linkStyle(orSepCont, "or-label-cont");
+        linkStyle(loginWindow, "login-window");
 
         //Dividers
         linkStyle(verDiv, "ver-divider");
