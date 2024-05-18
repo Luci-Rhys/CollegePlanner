@@ -20,6 +20,7 @@ public class Login extends Window {
     private Stage loginStage;
 
     public Login(Stage loginStage){
+        super(loginStage);
         this.loginScene = createLoginScene();
         this.loginStage = loginStage;
         linkStyleSheet("/css/login-styling.css", loginScene);
@@ -52,6 +53,8 @@ public class Login extends Window {
         toolbar.setPrefSize(1175,30);
 
         VBox tbTop = new VBox(toolbar, top);
+        dragWindow(toolbar);
+
 
         //BorderPane initialization and assignment
         loginSceneLayout = new BorderPane();
@@ -61,25 +64,17 @@ public class Login extends Window {
         loginSceneLayout.setRight(right);
         loginSceneLayout.setBottom(bottom);
 
-        dragWindow(toolbar, loginStage);
-
-        //Drop shadow for window
-        DropShadow ds = new DropShadow();
-        ds.setRadius(20);
-        ds.setHeight(25);
-        ds.setWidth(25);
-        ds.setOffsetX(-12);
-        ds.setOffsetY(-12);
-        ds.setColor(Color.rgb(0, 0, 0, 0.2));
-        loginWindowCont.setEffect(ds);
-
         /*
         The remaining code until the return statement is the CSS
          */
-        linkStyle(top, "top-pane");
+        linkStyle(tbTop, "top-pane");
+        linkStyle(tbTop, "pane-size");
         linkStyle(left, "left-pane");
+        linkStyle(left, "pane-size");
         linkStyle(right, "right-pane");
+        linkStyle(right, "pane-size");
         linkStyle(bottom, "bottom-pane");
+        linkStyle(bottom, "pane-size");
         linkStyle(loginWindow, "center-pane");
 
         return loginSceneLayout;
@@ -98,20 +93,20 @@ public class Login extends Window {
         loginWindow = new StackPane();
 
         //Label Initializations
-        signIn = new Label("Sign in to your FP account");
-        username = new Label("Username");
+        signIn = new Label("Sign in to your CP planner");
+        username = new Label("Username/Email");
         password = new Label("Password");
         orSeparator = new Label("or");
         incorrect = new Label("Incorrect email or password");
 
         //Button initializations
         createNewAcct = new Button("Create New Account");
-        createNewAcct.getStyleClass().add("newAcctBtn");
+
         login = new Button("Login");
         forgotPW = new Button();
 
         //Logo initialization
-        Image logo = new Image(new File("training.png").toURI().toString()); //Temporary placeholder from previous project, tb replaced
+        Image logo = new Image(getClass().getResourceAsStream("/images/training.png")); //temp placeholder, will be updated
         ImageView logoView = new ImageView(logo);;
 
         //Separator initializations
@@ -153,7 +148,8 @@ public class Login extends Window {
         HBox newAcctBtnCont = new HBox(createNewAcct);
 
         //Separator with "or" in the middle
-        HBox sepAndLbl = new HBox(hzDivLeftCont, orSeparator, hzDivRightCont);
+        HBox orSepCont = new HBox(orSeparator);
+        HBox sepAndLbl = new HBox(hzDivLeftCont, orSepCont, hzDivRightCont);
 
         //Login button container
         HBox loginBtnCont = new HBox(login);
@@ -166,6 +162,42 @@ public class Login extends Window {
         //StackPane assignment
         loginWindow.getChildren().add(loginWinCont);
 
+        /*
+        From here until the return statement is the CSS link to styling
+         */
+
+        //Logo
+        linkStyle(imageCont, "logo-style");
+
+        //Buttons
+        linkStyle(login, "login-button");
+        linkStyle(createNewAcct, "newAcctBtn");
+
+        //Labels
+        linkStyle(signInLabel, "sign-in-label");
+        linkStyle(username, "field-label");
+        linkStyle(password, "field-label");
+        linkStyle(orSeparator, "or-label");
+
+        //Containers
+        linkStyle(centerPaneCnt, "center-pane");
+        linkStyle(txtFldsAndBtns, "txtFldsAndBtns");
+        linkStyle(imageCont, "logo-style");
+        linkStyle(rightPaneCnt, "right-pane-style");
+        linkStyle(newAcctBtnCont, "create-account");
+        linkStyle(hzDivLeftCont, "hz-left-divider-cont");
+        linkStyle(hzDivRightCont, "hz-right-divider-cont");
+        linkStyle(unLblAndTFCont, "un-comp-container");
+        linkStyle(pwLblAndTFCont, "pw-comp-container");
+        linkStyle(loginBtnCont, "login-btn-cont");
+        linkStyle(sepAndLbl, "sepCont");
+        linkStyle(orSepCont, "or-label-cont");
+
+        //Dividers
+        linkStyle(verDiv, "ver-divider");
+        linkStyle(hzDivLeft, "horizontal-divider");
+        linkStyle(hzDivRight, "horizontal-divider");
+
         return loginWindow;
     }
 
@@ -173,7 +205,7 @@ public class Login extends Window {
     private Pane bottomPane (){
         //Creates and adds graphic to button
         Button exit = new Button();
-        Image power = new Image(new File("exit.png").toURI().toString());
+        Image power = new Image(getClass().getResourceAsStream("/images/exit.png"));
         ImageView powerGraphic = new ImageView(power);
         exit.setGraphic(powerGraphic);
 

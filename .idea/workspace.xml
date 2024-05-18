@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/grdbk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/notes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/progress.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/training.png" afterDir="false" />
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="iniial commit and import from different project that had issues running">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/CollegePlanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/CollegePlanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/login-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/login-styling.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,24 +21,25 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Luci-Rhys"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Luci-Rhys&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Luci-Rhys/CollegePlanner.git",
-    "accountId": "269f1f87-54ba-48f2-aaa5-cc1ef1fbaf98"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Luci-Rhys/CollegePlanner.git&quot;,
+    &quot;accountId&quot;: &quot;269f1f87-54ba-48f2-aaa5-cc1ef1fbaf98&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -49,31 +47,32 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2gaU2LVcGfeen6pDVz3H9aNUHod" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Application.executor": "Run",
-    "Application.CollegePlanner.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CollegePlanner.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\luci-\Desktop\CollegePlanner\CollegePlanner\src\main\resources\images" />
@@ -105,8 +104,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715934976012</updated>
-      <workItem from="1715934977046" duration="1760000" />
+      <workItem from="1715934977046" duration="2089000" />
+      <workItem from="1715960685075" duration="12754000" />
+      <workItem from="1716047599836" duration="954000" />
     </task>
+    <task id="LOCAL-00001" summary="iniial commit and import from different project that had issues running">
+      <option name="closed" value="true" />
+      <created>1715936931829</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715936931829</updated>
+    </task>
+    <task id="LOCAL-00002" summary="iniial commit and import from different project that had issues running">
+      <option name="closed" value="true" />
+      <created>1715936962910</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715936962910</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,5 +140,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="iniial commit and import from different project that had issues running" />
+    <option name="LAST_COMMIT_MESSAGE" value="iniial commit and import from different project that had issues running" />
   </component>
 </project>
