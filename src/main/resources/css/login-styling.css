@@ -9,19 +9,19 @@ Panes
 }
 
 .top-pane {
-    -fx-background-color: #7FFF00;
+    -fx-background-color: #B0E0E6;
 }
 
 .bottom-pane {
-    -fx-background-color: #318CE7;
+    -fx-background-color: #F0FFF0;
 }
 
 .left-pane {
-    -fx-background-color: linear-gradient(to bottom, #7FFF00 5%, #318CE7 90%);
+    -fx-background-color: linear-gradient(to bottom, #B0E0E6 5%, #F0FFF0 90%);
 }
 
 .right-pane {
-    -fx-background-color: linear-gradient(to bottom, #7FFF00 5%, #318CE7 90%);
+    -fx-background-color: linear-gradient(to bottom, #B0E0E6 5%, #F0FFF0 90%);
 }
 
 .center-pane {
@@ -34,6 +34,8 @@ Panes
 
 .login-pane {
     -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 0.2px;
 }
 
 /*
@@ -70,12 +72,17 @@ Containers
 }
 
 .sepCont {
-    -fx-padding: 0px 0px 0px 30px;
+    -fx-padding: 0px 0px 0px 22px;
+    -fx-spacing: 5px;
 }
 
 
 .power-btn-cont {
     -fx-padding: 160px 0px 0px 10px;
+}
+
+.login-window {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 25, 0, -15, -15);
 }
 
 
@@ -93,24 +100,29 @@ Button:hover {
 
 .newAcctBtn {
     -fx-background-radius: 30px;
-    -fx-background-color: #0047AB;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-background-color: #F0FFF0;
+    -fx-text-fill: black;
+    -fx-font-weight: 700;
     -fx-font-size: 20;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
 }
 
 .login-button {
     -fx-font-size: 20px;
-    -fx-font-weight: bold;
+    -fx-font-weight: 700;
     -fx-background-radius: 30px;
     -fx-padding: 7px 50px;
-    -fx-background-color: #66FF00;
-    -fx-text-fill: white;
+    -fx-background-color: #B0E0E6;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
 }
 
 .forgot-pw {
-    -fx-text-fill: blue;
-    -fx-padding: 0px;
+    -fx-text-fill: #4169E1;
+    -fx-padding: 0px 0px 0px 70px;
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     -fx-font-style: italic;
@@ -140,6 +152,7 @@ Labels
 .field-label {
     -fx-font-weight: bold;
     -fx-font-size: 14px;
+    -fx-padding: 0px 0px 0px 10px;
 }
 
 .incorrect-label {
