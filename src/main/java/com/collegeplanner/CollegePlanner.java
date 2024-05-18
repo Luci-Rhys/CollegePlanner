@@ -12,6 +12,7 @@ public class CollegePlanner extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         Login login = new Login(primaryStage);
         primaryStage.setScene(login.loginScene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
