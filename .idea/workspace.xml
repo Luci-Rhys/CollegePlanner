@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="updated forgotpw button label, updated sign in label, removed stage parameter from createLoginPane method">
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Planner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Planner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,7 @@
       <updated>1715934976012</updated>
       <workItem from="1715934977046" duration="2089000" />
       <workItem from="1715960685075" duration="12754000" />
-      <workItem from="1716047599836" duration="8200000" />
+      <workItem from="1716047599836" duration="10966000" />
     </task>
     <task id="LOCAL-00001" summary="iniial commit and import from different project that had issues running">
       <option name="closed" value="true" />
@@ -176,7 +178,55 @@
       <option name="project" value="LOCAL" />
       <updated>1716055867737</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="deleted unused imports">
+      <option name="closed" value="true" />
+      <created>1716056424194</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716056424194</updated>
+    </task>
+    <task id="LOCAL-00011" summary="initial commit with constructor, getters, and setters">
+      <option name="closed" value="true" />
+      <created>1716056463008</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716056463008</updated>
+    </task>
+    <task id="LOCAL-00012" summary="initial commit of planner class">
+      <option name="closed" value="true" />
+      <created>1716056733410</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716056733410</updated>
+    </task>
+    <task id="LOCAL-00013" summary="initial commit of course class">
+      <option name="closed" value="true" />
+      <created>1716056815198</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716056815198</updated>
+    </task>
+    <task id="LOCAL-00014" summary="initial commit of gradebook class">
+      <option name="closed" value="true" />
+      <created>1716056953351</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716056953351</updated>
+    </task>
+    <task id="LOCAL-00015" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1716059105133</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716059105133</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +264,12 @@
     <MESSAGE value="?" />
     <MESSAGE value="added drop shadow and changed background colors, as well as button colors" />
     <MESSAGE value="updated forgotpw button label, updated sign in label, removed stage parameter from createLoginPane method" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated forgotpw button label, updated sign in label, removed stage parameter from createLoginPane method" />
+    <MESSAGE value="deleted unused imports" />
+    <MESSAGE value="initial commit with constructor, getters, and setters" />
+    <MESSAGE value="initial commit of planner class" />
+    <MESSAGE value="initial commit of course class" />
+    <MESSAGE value="initial commit of gradebook class" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>
