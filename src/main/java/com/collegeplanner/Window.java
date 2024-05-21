@@ -13,17 +13,17 @@ public class Window {
     private HBox titleBar;
     private Stage primaryStage;
 
-    public Window(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public Window() {
+
     }
 
     //Enables movement of window by clicking and dragging the top pane of the window
-    public void dragWindow(HBox title){
+    public void dragWindow(HBox title, Stage stage){
 
             title.setOnMousePressed(press -> {
                 title.setOnMouseDragged(drag -> {
-                    primaryStage.setX(drag.getScreenX() - press.getSceneX());
-                    primaryStage.setY(drag.getScreenY() - press.getSceneY());
+                    stage.setX(drag.getScreenX() - press.getSceneX());
+                    stage.setY(drag.getScreenY() - press.getSceneY());
                 });
             });
     }
