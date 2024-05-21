@@ -1,26 +1,37 @@
 package com.collegeplanner;
 
-public class User {
-    private int id;
+import java.util.ArrayList;
+
+public class Student {
+
+    private int schoolId;
     private String username;
     private String email;
     private String password;
     private String classification;
 
-    public User(int id, String username, String email, String password, String classification) {
-        this.id = id;
+    private double gradePtAvg;
+    private int creditsEarned;
+    private int creditsAttempted;
+    private ArrayList<Planner> planners;
+
+    public Student(int id, String username, String email, String password, String classification) {
+        this.schoolId = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.classification = classification;
     }
 
+    public void createUser(){
+    }
+
     public int getId() {
-        return id;
+        return schoolId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.schoolId = id;
     }
 
     public String getUsername() {
