@@ -11,9 +11,12 @@ public class CollegePlanner extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
 
-        Login login = new Login(primaryStage);
+        Stage exitStage = new Stage();
+        exitStage.initStyle(StageStyle.UNDECORATED);
+
+        Login login = new Login(primaryStage, exitStage);
         primaryStage.setScene(login.loginScene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
