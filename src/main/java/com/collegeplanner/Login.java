@@ -14,11 +14,12 @@ import javafx.stage.Stage;
 public class Login extends Window {
     Scene loginScene;
     private Stage loginStage;
+    private Stage exitStage;
 
-    public Login(Stage loginStage){
-        super(loginStage);
+    public Login(Stage loginStage, Stage exitStage){
         this.loginScene = createLoginScene();
         this.loginStage = loginStage;
+        this.exitStage = exitStage;
         linkStyleSheet("/css/login-styling.css", loginScene);
     }
 
@@ -46,10 +47,11 @@ public class Login extends Window {
 
         //Containers
         HBox toolbar = new HBox();
+        dragWindow(toolbar, loginStage);
         toolbar.setPrefSize(1175,30);
 
         VBox tbTop = new VBox(toolbar, top);
-        dragWindow(toolbar);
+
 
 
         //BorderPane initialization and assignment
@@ -102,7 +104,7 @@ public class Login extends Window {
         forgotPW = new Button("Forgot Password?");
 
         //Logo initialization
-        Image logo = new Image(getClass().getResourceAsStream("/images/training.png")); //temp placeholder, will be updated
+        Image logo = new Image(getClass().getResourceAsStream("/images/logo.png")); //temp placeholder, will be updated
         ImageView logoView = new ImageView(logo);;
 
         //Separator initializations
@@ -215,7 +217,7 @@ public class Login extends Window {
 
         //Exit event handler
         exit.setOnAction(e -> {
-            Platform.exit();
+            exitPopUp(exitStage);
         });
 
         //CSS Styling
@@ -223,5 +225,48 @@ public class Login extends Window {
         exitBtnCont.getStyleClass().add("power-btn-cont");
 
         return bottomPane;
+    }
+
+    private void exitPopUp(Stage exitStage){
+        Scene exitScene;
+
+        //Custom toolbar to match look of the rest of the program
+        HBox custTool = new HBox();
+        dragWindow(custTool, exitStage);
+
+        //Popup message confirming exit
+        Label exitConf = new Label("Are you sure you want to exit?");
+
+        //Yes and cancel buttons
+        Button confExit = new Button("Yes");
+        Button cancel = new Button("Cancel");
+
+        //Containers
+        HBox exitBtnsCont = new HBox(confExit, cancel);
+        VBox exitPopUpCont = new VBox(custTool, exitConf, exitBtnsCont);
+
+        //Assigning content to scene
+        exitScene = new Scene(exitPopUpCont, 650, 275);
+
+        //Showing scene to stage
+        exitStage.setScene(exitScene);
+        exitStage.show();
+
+        //Button event handlers
+        confExit.setOnAction(e -> {
+            Platform.exit();
+        });
+
+        cancel.setOnAction(e -> {
+            exitStage.close();
+            exitStage.setScene(null);
+        });
+
+        //CSS Links
+        linkStyleSheet("/css/login-styling.css", exitScene);
+
+        linkStyle(exitPopUpCont, "exit-popup-cont");
+        linkStyle(custTool, "cust-toolbar");
+
     }
 }
