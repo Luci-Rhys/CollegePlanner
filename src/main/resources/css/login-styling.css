@@ -85,6 +85,10 @@ Containers
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 25, 0, -15, -15);
 }
 
+.cust-toolbar{
+    -fx-min-height: 20px;
+}
+
 
 /*
 Buttons
