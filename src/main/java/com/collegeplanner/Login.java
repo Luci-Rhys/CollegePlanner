@@ -229,7 +229,7 @@ public class Login extends Window {
         Scene exitScene;
 
         //Custom toolbar to match look of the rest of the program
-        Label exit = new Label("Exit College Planner");
+        Label exit = new Label("College Planner");
         HBox custTool = new HBox(exit);
         dragWindow(custTool, exitStage);
 

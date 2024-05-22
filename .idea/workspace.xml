@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/exit-popup-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/exit-popup-styling.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/login-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/login-styling.css" afterDir="false" />
-    </list>
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="added bkgrd color , styling for buttons, and alignments of elements in exit pop up screen" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +105,7 @@
       <workItem from="1715934977046" duration="2089000" />
       <workItem from="1715960685075" duration="12754000" />
       <workItem from="1716047599836" duration="35516000" />
-      <workItem from="1716350866529" duration="6512000" />
+      <workItem from="1716350866529" duration="6865000" />
     </task>
     <task id="LOCAL-00001" summary="iniial commit and import from different project that had issues running">
       <option name="closed" value="true" />
@@ -344,7 +339,31 @@
       <option name="project" value="LOCAL" />
       <updated>1716352251367</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="resolved dragwindow issue for login by swapping initializations in the constructor and added labels and styling for popup">
+      <option name="closed" value="true" />
+      <created>1716358443841</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1716358443841</updated>
+    </task>
+    <task id="LOCAL-00031" summary="renamed toolbar selector">
+      <option name="closed" value="true" />
+      <created>1716358471383</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1716358471383</updated>
+    </task>
+    <task id="LOCAL-00032" summary="added bkgrd color , styling for buttons, and alignments of elements in exit pop up screen">
+      <option name="closed" value="true" />
+      <created>1716358531851</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1716358531851</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,9 +393,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated styling to resolve truncated &quot;or&quot; label" />
-    <MESSAGE value="updated styling links, resolved picture visibility issue, changed sign in label" />
-    <MESSAGE value="added whitespace for visibility" />
     <MESSAGE value="?" />
     <MESSAGE value="added drop shadow and changed background colors, as well as button colors" />
     <MESSAGE value="updated forgotpw button label, updated sign in label, removed stage parameter from createLoginPane method" />
@@ -399,6 +415,9 @@
     <MESSAGE value="added exitStage" />
     <MESSAGE value="deleted temp placeholder logo" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="resolved dragwindow issue for login by swapping initializations in the constructor and added labels and styling for popup" />
+    <MESSAGE value="renamed toolbar selector" />
+    <MESSAGE value="added bkgrd color , styling for buttons, and alignments of elements in exit pop up screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="added bkgrd color , styling for buttons, and alignments of elements in exit pop up screen" />
   </component>
 </project>
