@@ -17,9 +17,9 @@ public class Login extends Window {
     private Stage exitStage;
 
     public Login(Stage loginStage, Stage exitStage){
-        this.loginScene = createLoginScene();
         this.loginStage = loginStage;
         this.exitStage = exitStage;
+        this.loginScene = createLoginScene();
         linkStyleSheet("/css/login-styling.css", loginScene);
     }
 
@@ -48,11 +48,8 @@ public class Login extends Window {
         //Containers
         HBox toolbar = new HBox();
         dragWindow(toolbar, loginStage);
-        toolbar.setPrefSize(1175,30);
 
         VBox tbTop = new VBox(toolbar, top);
-
-
 
         //BorderPane initialization and assignment
         loginSceneLayout = new BorderPane();
@@ -74,6 +71,7 @@ public class Login extends Window {
         linkStyle(bottom, "bottom-pane");
         linkStyle(bottom, "pane-size");
         linkStyle(loginWindow, "center-pane");
+        linkStyle(toolbar, "login-toolbar");
 
         return loginSceneLayout;
     }
@@ -231,19 +229,21 @@ public class Login extends Window {
         Scene exitScene;
 
         //Custom toolbar to match look of the rest of the program
-        HBox custTool = new HBox();
+        Label exit = new Label("Exit College Planner");
+        HBox custTool = new HBox(exit);
         dragWindow(custTool, exitStage);
 
         //Popup message confirming exit
-        Label exitConf = new Label("Are you sure you want to exit?");
+        Label exitConfLbl = new Label("Are you sure you want to exit?");
 
         //Yes and cancel buttons
-        Button confExit = new Button("Yes");
+        Button confExitBtn = new Button("Yes");
         Button cancel = new Button("Cancel");
 
         //Containers
-        HBox exitBtnsCont = new HBox(confExit, cancel);
-        VBox exitPopUpCont = new VBox(custTool, exitConf, exitBtnsCont);
+        HBox exitConfLblCont = new HBox(exitConfLbl);
+        HBox exitBtnsCont = new HBox(confExitBtn, cancel);
+        VBox exitPopUpCont = new VBox(custTool, exitConfLblCont, exitBtnsCont);
 
         //Assigning content to scene
         exitScene = new Scene(exitPopUpCont, 650, 275);
@@ -253,7 +253,7 @@ public class Login extends Window {
         exitStage.show();
 
         //Button event handlers
-        confExit.setOnAction(e -> {
+        confExitBtn.setOnAction(e -> {
             Platform.exit();
         });
 
@@ -263,10 +263,16 @@ public class Login extends Window {
         });
 
         //CSS Links
-        linkStyleSheet("/css/login-styling.css", exitScene);
+        linkStyleSheet("/css/exit-popup-styling.css", exitScene);
 
         linkStyle(exitPopUpCont, "exit-popup-cont");
         linkStyle(custTool, "cust-toolbar");
-
+        linkStyle(exitPopUpCont, "exit-popup-cont");
+        linkStyle(exit, "exit-label");
+        linkStyle(custTool, "exit-label-cont");
+        linkStyle(exitConfLbl, "exit-conf-label");
+        linkStyle(exitConfLblCont, "exit-conf-cont");
+        linkStyle(exitBtnsCont, "exit-btns-cont");
+        linkStyle(confExitBtn, "conf-exit-btn");
     }
 }
