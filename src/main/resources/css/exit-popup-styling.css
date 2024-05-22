@@ -1,0 +1,61 @@
+/*
+Buttons
+*/
+
+Button {
+    -fx-background-radius: 30px;
+    -fx-font-size: 18px;
+    -fx-padding: 7px 50px;
+    -fx-font-weight: 700;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+Button:hover {
+    -fx-cursor: hand;
+}
+
+.conf-exit-btn {
+    -fx-background-color: #000080;
+    -fx-text-fill: white;
+}
+
+
+/* Containers */
+
+.exit-popup-cont{
+    -fx-background-color: #F0F8FF;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.cust-toolbar{
+    -fx-min-height: 20px;
+}
+
+.exit-label-cont {
+    -fx-alignment: center;
+    -fx-padding: 0px 0px 65px 0px;
+}
+
+.exit-conf-cont {
+    -fx-alignment: center;
+}
+
+.exit-btns-cont {
+    -fx-alignment: center;
+    -fx-spacing: 25px;
+}
+
+/* Labels */
+
+.exit-label {
+    -fx-font-size: 12px;
+    -fx-font-family: "Georgia";
+}
+
+.exit-conf-label {
+    -fx-font-size: 30px;
+    -fx-font-family: "Georgia";
+    -fx-padding: 0px 0px 55px 0px;
+}
