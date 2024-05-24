@@ -1,45 +1,62 @@
 package com.collegeplanner;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class Student {
 
     private int schoolId;
-    private String username;
-    private String email;
-    private String password;
-    private String classification;
-
-    private double gradePtAvg;
-    private int creditsEarned;
-    private int creditsAttempted;
+    private String firstName, lastName, email, password, classification;
+    private double gpa;
+    private int creditsEarned, creditsAttempted, creditsRemaining;
     private ArrayList<Planner> planners;
 
-    public Student(int id, String username, String email, String password, String classification) {
+    public Student(int id, String firstName, String lastName, String email, String password, String schoolName,
+                   String classification, double gpa, int creditsEarned, int creditsAttempted, int creditsRemaining,
+                   ArrayList<Planner> planners) {
+
         this.schoolId = id;
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.classification = classification;
+        this.gpa = gpa;
+        this.creditsEarned = creditsEarned;
+        this.creditsAttempted = creditsAttempted;
+        this.creditsRemaining = creditsRemaining;
+        this.planners = planners;
     }
 
-    public void createUser(){
-    }
-
-    public int getId() {
+    public int getSchoolId() {
         return schoolId;
     }
 
-    public void setId(int id) {
-        this.schoolId = id;
+    public void setSchoolId(int schoolId) {
+        this.schoolId = schoolId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -64,5 +81,45 @@ public class Student {
 
     public void setClassification(String classification) {
         this.classification = classification;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    public int getCreditsEarned() {
+        return creditsEarned;
+    }
+
+    public void setCreditsEarned(int creditsEarned) {
+        this.creditsEarned = creditsEarned;
+    }
+
+    public int getCreditsAttempted() {
+        return creditsAttempted;
+    }
+
+    public void setCreditsAttempted(int creditsAttempted) {
+        this.creditsAttempted = creditsAttempted;
+    }
+
+    public int getCreditsRemaining() {
+        return creditsRemaining;
+    }
+
+    public void setCreditsRemaining(int creditsRemaining) {
+        this.creditsRemaining = creditsRemaining;
+    }
+
+    public ArrayList<Planner> getPlanners() {
+        return planners;
+    }
+
+    public void setPlanners(ArrayList<Planner> planners) {
+        this.planners = planners;
     }
 }
