@@ -2,6 +2,8 @@ package com.collegeplanner;
 
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,15 +12,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Login extends Window {
     Scene loginScene;
     private Stage loginStage;
     private Stage exitStage;
+    private Stage newStudentStage;
 
-    public Login(Stage loginStage, Stage exitStage){
+    public Login(Stage loginStage, Stage exitStage, Stage newStudentStage){
         this.loginStage = loginStage;
         this.exitStage = exitStage;
+        this.newStudentStage = newStudentStage;
         this.loginScene = createLoginScene();
         linkStyleSheet("/css/login-styling.css", loginScene);
     }
@@ -97,9 +102,11 @@ public class Login extends Window {
 
         //Button initializations
         createNewAcct = new Button("Create New Account");
-
         login = new Button("Login");
         forgotPW = new Button("Forgot Password?");
+
+        //Button handlers
+        loginSceneBtnHandlers(login, createNewAcct, forgotPW);
 
         //Logo initialization
         Image logo = new Image(getClass().getResourceAsStream("/images/logo.png")); //temp placeholder, will be updated
@@ -275,4 +282,229 @@ public class Login extends Window {
         linkStyle(exitBtnsCont, "exit-btns-cont");
         linkStyle(confExitBtn, "conf-exit-btn");
     }
+
+    /*
+Creates the scene that populates when create account button is clicked, labels and their respective fields are
+written together for readability and ease of maintenance
+ */
+    private Scene createNewStudentScene(Stage newStudentStage){
+        Scene newStudentScene;
+        newStudentStage = new Stage(StageStyle.UNDECORATED);
+
+        //Custom title bar
+        Label createNew = new Label("Create New Account");
+        HBox titleBar = new HBox(createNew);
+        dragWindow(titleBar, newStudentStage);
+
+        //Scene Label
+        Label studentInfo = new Label("Student Information");
+        HBox sceneLblCont = new HBox(studentInfo);
+
+        //Student ID
+        Label studentID = new Label("Student ID");
+        TextField idTF = new TextField();
+        idTF.setPromptText("enter student ID");
+        VBox studentIdCont = new VBox(studentID, idTF);
+
+        //First Name
+        Label firstName = new Label("First Name");
+        TextField firstNameTF = new TextField();
+        firstNameTF.setPromptText("enter first name");
+        VBox firstNameCont = new VBox(firstName, firstNameTF);
+
+        //Last Name
+        Label lastName = new Label("Last Name");
+        TextField lastNameTF = new TextField();
+        lastNameTF.setPromptText("enter last name");
+        VBox lastNameCont = new VBox(lastName, lastNameTF);
+
+        //Email
+        Label email = new Label("Email");
+        TextField emailTF = new TextField();
+        emailTF.setPromptText("enter student email");
+        VBox emailCont = new VBox(email, emailTF);
+
+        //Password
+        Label password = new Label("Password");
+        PasswordField passwordTF = new PasswordField();
+        passwordTF.setPromptText("enter password");
+        VBox passwordCont = new VBox(password, passwordTF);
+
+        //Confirm Password
+        Label confirmPW = new Label("Confirm Password");
+        PasswordField confirmPWTF = new PasswordField();
+        confirmPWTF.setPromptText("re-enter password");
+        VBox confirmPWCont = new VBox(confirmPW, confirmPWTF);
+
+        //Password HBox Container
+        VBox pwCont = new VBox(passwordCont, confirmPWCont);
+
+        //Student Classification
+        Label classLabel = new Label("Student Classification");
+        ObservableList<String> studentClasses = FXCollections.observableArrayList("Freshman", "Sophomore", "Junior",
+                "Senior", "Non-Degree Seeking");
+        ComboBox<String> classificationCB = new ComboBox<>(studentClasses);
+        VBox classificationCont = new VBox(classLabel, classificationCB);
+
+        //GPA
+        Label gpaLabel = new Label("Grade Point Average (GPA)");
+        TextField gpaTF = new TextField();
+        gpaTF.setPromptText("enter GPA");
+        VBox gpaCont = new VBox(gpaLabel, gpaTF);
+
+        //Credits Earned
+        Label creditsEarnedLabel = new Label("Credits Earned");
+        TextField creditsEarnedTF = new TextField();
+        creditsEarnedTF.setPromptText("enter credits earned");
+        VBox creditsEarnedCont = new VBox(creditsEarnedLabel, creditsEarnedTF);
+
+        //Credits Attempted
+        Label creditsAttemptedLabel = new Label("Credits Attempted");
+        TextField creditsAttemptedTF = new TextField();
+        creditsAttemptedTF.setPromptText("enter credits attempted");
+        VBox creditsAttemptCont = new VBox(creditsAttemptedLabel, creditsAttemptedTF);
+
+        //Credits Remaining
+        Label creditsRemainingLabel = new Label("Credits Remaining");
+        TextField creditsRemainingTF = new TextField();
+        creditsRemainingTF.setPromptText("enter credits remaining");
+        VBox creditsRemainingCont = new VBox(creditsRemainingLabel, creditsRemainingTF);
+
+        //GPA and credits info container
+        VBox creditsAndGPACont = new VBox(gpaCont, creditsEarnedCont, creditsAttemptCont, creditsRemainingCont);
+
+        //Buttons
+        Button submitBtn = new Button("Submit");
+        Button cancelBtn = new Button("Cancel");
+
+        //Button handlers
+        createNewBtnsHandler(submitBtn, cancelBtn, newStudentStage);
+
+        /*
+        Containers for the setup of the scene
+         */
+
+        //Left hand side of container
+        VBox leftHand = new VBox(studentIdCont, firstNameCont, lastNameCont, emailCont, passwordCont, confirmPWCont);
+
+        //Right hand side of createNewStudent
+        VBox rightHand = new VBox(gpaCont, creditsEarnedCont, creditsAttemptCont, creditsRemainingCont, classificationCont);
+
+        //
+
+        //Buttons container
+        HBox createBtnsCont = new HBox(submitBtn, cancelBtn);
+
+        //All student Info
+        HBox studentInfoCont = new HBox(leftHand, rightHand);
+        //Scene container
+
+        VBox newStudentSceneCont = new VBox(titleBar, sceneLblCont, studentInfoCont, createBtnsCont);
+
+        //Scene assignment
+        newStudentScene = new Scene(newStudentSceneCont, 600, 710);
+        newStudentStage.setScene(newStudentScene);
+        newStudentStage.show();
+
+        /*
+        CSS Links to stylesheet and selectors
+         */
+        linkStyleSheet("/css/create-new-acct-styling.css", newStudentScene);
+
+        //Buttons
+
+        //Containers
+        linkStyle(titleBar, "title-bar");
+        linkStyle(sceneLblCont, "scene-lbl-cont");
+        linkStyle(createBtnsCont, "btns-cont");
+        linkStyle(studentInfo, "student-info-lbl");
+        linkStyle(studentInfoCont, "student-info-cont");
+        linkStyle(leftHand, "left-hand-cont");
+        linkStyle(rightHand, "right-hand-cont");
+
+        //Labels
+        //TextField
+        linkStyle(gpaTF, "number-tf");
+        linkStyle(creditsEarnedTF, "number-tf");
+        linkStyle(creditsAttemptedTF, "number-tf");
+        linkStyle(creditsRemainingTF, "number-tf");
+
+
+        return newStudentScene;
+    }
+
+    private void loginSceneBtnHandlers(Button login, Button createAcct, Button forgotPW){
+
+        login.setOnAction(e->{
+
+        });
+
+        createAcct.setOnAction(e->{
+            createNewStudentScene(newStudentStage);
+        });
+
+        forgotPW.setOnAction(e->{
+
+        });
+    }
+
+    private void createNewBtnsHandler(Button submit, Button cancel, Stage stage){
+
+        submit.setOnAction(e->{
+
+        });
+
+        cancel.setOnAction(e->{
+            Stage cancelEnrollStage = new Stage(StageStyle.UNDECORATED);
+            Scene cancelEnrollScene;
+
+            //Window titlebar and Label w/ dragWindow method
+            Label createAccount = new Label("Create New Account");
+            HBox titleBar = new HBox(createAccount);
+            dragWindow(titleBar, cancelEnrollStage);
+
+            //Label
+            Label confirmCx = new Label("Are you sure you wish to cancel registration?\nProgress will not be saved.");
+            HBox confirmCxLblCont = new HBox(confirmCx);
+
+            //Buttons
+            Button cancelEnrollment = new Button("Yes");
+            Button dontCancelEnrollment = new Button("No");
+            HBox cxEnrollBtns = new HBox(cancelEnrollment, dontCancelEnrollment);
+
+            //Cancel enrollment content container
+            VBox cxEnrollCont = new VBox(titleBar, confirmCxLblCont, cxEnrollBtns);
+
+            //Scene assignment
+            cancelEnrollScene = new Scene(cxEnrollCont, 600, 200);
+            cancelEnrollStage.setScene(cancelEnrollScene);
+            cancelEnrollStage.show();
+
+
+            //Button event handlers
+            cancelEnrollment.setOnAction(event->{
+                cancelEnrollStage.close();
+                stage.close();
+            });
+
+            dontCancelEnrollment.setOnAction(event->{
+                cancelEnrollStage.close();
+            });
+
+            //CSS link
+            linkStyleSheet("/css/create-new-acct-styling.css", cancelEnrollScene);
+
+            //Buttons
+            //Containers
+            linkStyle(titleBar, "title-bar");
+            linkStyle(cxEnrollBtns, "btns-cont");
+            linkStyle(cxEnrollCont, "cx-enroll-cont");
+            linkStyle(cxEnrollBtns, "cx-enroll-btns-cont");
+            linkStyle(confirmCxLblCont, "confirm-cx-lbl-cont");
+            //Labels
+            linkStyle(confirmCx, "confirm-cx-label");
+            //
+        });
+    }
+
 }
