@@ -1,0 +1,82 @@
+/* Buttons */
+
+Button {
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+    -fx-background-radius: 30px;
+    -fx-padding: 7px 30px;
+}
+
+/* Containers */
+.title-bar {
+    -fx-alignment: center;
+    -fx-padding: 0px 0px 10px 0px;
+}
+
+.btns-cont {
+    -fx-alignment: center;
+    -fx-spacing: 40px;
+}
+
+.cx-enroll-btns-cont{
+    -fx-padding: 0px 0px 15px 0px
+}
+
+.student-info-cont{
+    -fx-spacing: 100px;
+    -fx-alignment: center;
+    -fx-padding: 0px 0px 40px 0px;
+}
+
+.left-hand-cont{
+    -fx-spacing: 35px;
+}
+
+.right-hand-cont{
+    -fx-spacing: 35px;
+}
+
+.scene-lbl-cont{
+    -fx-alignment: center;
+}
+
+cx-enroll-cont {
+    -fx-padding: 0px 10px 10px 10px;
+}
+
+.confirm-cx-lbl-cont {
+    -fx-alignment: center;
+    -fx-padding: 40px 0px 40px 0px;
+}
+
+/* Fields */
+TextField, PasswordField {
+    -fx-font-size: 16px;
+    -fx-min-width: 200px ;
+    -fx-max-width: 200px;
+}
+
+.number-tf {
+    -fx-font-size: 10px;
+    -fx-min-width: 150px;
+    -fx-max-width: 150px;
+    -fx-min-height: 16px;
+}
+
+/* Labels */
+
+Label{
+    -fx-font-size: 15px;
+    -fx-font-family: "Georgia";
+}
+
+.student-info-lbl {
+    -fx-font-size: 25px;
+    -fx-font-family: "Georgia";
+    -fx-padding: 10px 0px 25px 0px;
+}
+
+.confirm-cx-label{
+    -fx-font-size: 20px;
+    -fx-wrap-text: true;
+}
