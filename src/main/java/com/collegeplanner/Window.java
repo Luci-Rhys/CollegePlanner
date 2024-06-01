@@ -10,9 +10,6 @@ This class contains methods for window movement and design(CSS stylesheets)
  */
 public class Window {
 
-    private HBox titleBar;
-    private Stage primaryStage;
-
     public Window() {
 
     }

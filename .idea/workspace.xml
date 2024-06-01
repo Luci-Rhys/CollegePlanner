@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="added stage for new account scene" />
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/validation-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/validation-styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +49,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -50,24 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CollegePlanner.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/luci-/Desktop/CollegePlanner/CollegePlanner/src/main/resources/images&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Run",
+    "Application.CollegePlanner.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last.edited.regexp": "Sample Text",
+    "last_opened_file_path": "C:/Users/luci-/Downloads/javax.mail.jar",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\luci-\Desktop\CollegePlanner\CollegePlanner\src\main\resources\images" />
@@ -106,6 +121,7 @@
       <workItem from="1715960685075" duration="12754000" />
       <workItem from="1716047599836" duration="35516000" />
       <workItem from="1716350866529" duration="34473000" />
+      <workItem from="1716783717821" duration="57988000" />
     </task>
     <task id="LOCAL-00001" summary="iniial commit and import from different project that had issues running">
       <option name="closed" value="true" />
@@ -403,7 +419,47 @@
       <option name="project" value="LOCAL" />
       <updated>1716522326361</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="?">
+      <option name="closed" value="true" />
+      <created>1716783759688</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1716783759688</updated>
+    </task>
+    <task id="LOCAL-00039" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1716790303198</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1716790303198</updated>
+    </task>
+    <task id="LOCAL-00040" summary="update after addition of javax.mail library">
+      <option name="closed" value="true" />
+      <created>1716790349517</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1716790349517</updated>
+    </task>
+    <task id="LOCAL-00041" summary="addition of methods checking for empty and mismatched fields, valid email input, and valid GPA input">
+      <option name="closed" value="true" />
+      <created>1716790408780</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1716790408780</updated>
+    </task>
+    <task id="LOCAL-00042" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1716790507559</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1716790507559</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,9 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit of planner class" />
-    <MESSAGE value="initial commit of course class" />
-    <MESSAGE value="initial commit of gradebook class" />
     <MESSAGE value="added private variables" />
     <MESSAGE value="initial commit of inner class grade category, and addition of updategrade and calculate assignment grade" />
     <MESSAGE value="added empty constructor" />
@@ -449,7 +502,6 @@
     <MESSAGE value="added exit functionality, updated perm logo, and removed super call" />
     <MESSAGE value="added exitStage" />
     <MESSAGE value="deleted temp placeholder logo" />
-    <MESSAGE value="initial commit" />
     <MESSAGE value="resolved dragwindow issue for login by swapping initializations in the constructor and added labels and styling for popup" />
     <MESSAGE value="renamed toolbar selector" />
     <MESSAGE value="added bkgrd color , styling for buttons, and alignments of elements in exit pop up screen" />
@@ -458,6 +510,10 @@
     <MESSAGE value="updated getters and setters with new variables" />
     <MESSAGE value="added create new account scene and stage" />
     <MESSAGE value="added stage for new account scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="added stage for new account scene" />
+    <MESSAGE value="?" />
+    <MESSAGE value="update after addition of javax.mail library" />
+    <MESSAGE value="addition of methods checking for empty and mismatched fields, valid email input, and valid GPA input" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>
