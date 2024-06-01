@@ -6,8 +6,19 @@ Button {
     -fx-background-radius: 30px;
     -fx-padding: 7px 30px;
 }
+/* ComboBox */
+ComboBox {
+    -fx-font-size: 15px;
+    -fx-font-family: Georgia;
+}
 
 /* Containers */
+.scene-cont{
+    -fx-background-color: #E6E6FA;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
 .title-bar {
     -fx-alignment: center;
     -fx-padding: 0px 0px 10px 0px;
@@ -54,10 +65,11 @@ TextField, PasswordField {
     -fx-font-size: 16px;
     -fx-min-width: 200px ;
     -fx-max-width: 200px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
 }
 
 .number-tf {
-    -fx-font-size: 10px;
     -fx-min-width: 150px;
     -fx-max-width: 150px;
     -fx-min-height: 16px;
@@ -78,5 +90,5 @@ Label{
 
 .confirm-cx-label{
     -fx-font-size: 20px;
-    -fx-wrap-text: true;
+    -fx-text-wrap: true;
 }
