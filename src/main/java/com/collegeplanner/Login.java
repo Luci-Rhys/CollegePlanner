@@ -11,8 +11,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.awt.color.ICC_ColorSpace;
+import java.util.ArrayList;
 
 public class Login extends Window {
     Scene loginScene;
@@ -321,7 +325,7 @@ written together for readability and ease of maintenance
         //Email
         Label email = new Label("Email");
         TextField emailTF = new TextField();
-        emailTF.setPromptText("enter student email");
+        emailTF.setPromptText("enter personal email");
         VBox emailCont = new VBox(email, emailTF);
 
         //Password
@@ -355,19 +359,19 @@ written together for readability and ease of maintenance
         //Credits Earned
         Label creditsEarnedLabel = new Label("Credits Earned");
         TextField creditsEarnedTF = new TextField();
-        creditsEarnedTF.setPromptText("enter credits earned");
+        creditsEarnedTF.setPromptText("credits earned");
         VBox creditsEarnedCont = new VBox(creditsEarnedLabel, creditsEarnedTF);
 
         //Credits Attempted
         Label creditsAttemptedLabel = new Label("Credits Attempted");
         TextField creditsAttemptedTF = new TextField();
-        creditsAttemptedTF.setPromptText("enter credits attempted");
+        creditsAttemptedTF.setPromptText("credits attempted");
         VBox creditsAttemptCont = new VBox(creditsAttemptedLabel, creditsAttemptedTF);
 
         //Credits Remaining
         Label creditsRemainingLabel = new Label("Credits Remaining");
         TextField creditsRemainingTF = new TextField();
-        creditsRemainingTF.setPromptText("enter credits remaining");
+        creditsRemainingTF.setPromptText("credits remaining");
         VBox creditsRemainingCont = new VBox(creditsRemainingLabel, creditsRemainingTF);
 
         //GPA and credits info container
@@ -376,9 +380,6 @@ written together for readability and ease of maintenance
         //Buttons
         Button submitBtn = new Button("Submit");
         Button cancelBtn = new Button("Cancel");
-
-        //Button handlers
-        createNewBtnsHandler(submitBtn, cancelBtn, newStudentStage);
 
         /*
         Containers for the setup of the scene
@@ -389,8 +390,6 @@ written together for readability and ease of maintenance
 
         //Right hand side of createNewStudent
         VBox rightHand = new VBox(gpaCont, creditsEarnedCont, creditsAttemptCont, creditsRemainingCont, classificationCont);
-
-        //
 
         //Buttons container
         HBox createBtnsCont = new HBox(submitBtn, cancelBtn);
@@ -403,14 +402,19 @@ written together for readability and ease of maintenance
 
         //Scene assignment
         newStudentScene = new Scene(newStudentSceneCont, 600, 710);
-        newStudentStage.setScene(newStudentScene);
-        newStudentStage.show();
 
-        /*
-        CSS Links to stylesheet and selectors
-         */
+        //Button handlers
+        createNewBtnsHandler(submitBtn, cancelBtn, newStudentStage, idTF, firstNameTF,
+                lastNameTF, emailTF, passwordTF, confirmPWTF,
+                gpaTF, creditsEarnedTF, creditsAttemptedTF, creditsRemainingTF,
+                classificationCB, newStudentScene, newStudentStage);
+
+        //Focus
+        newStudentSceneCont.requestFocus();
+        newStudentScene.setOnMouseClicked(e->{newStudentSceneCont.requestFocus();});
+
+        //CSS stylesheet
         linkStyleSheet("/css/create-new-acct-styling.css", newStudentScene);
-
         //Buttons
 
         //Containers
@@ -421,6 +425,7 @@ written together for readability and ease of maintenance
         linkStyle(studentInfoCont, "student-info-cont");
         linkStyle(leftHand, "left-hand-cont");
         linkStyle(rightHand, "right-hand-cont");
+        linkStyle(newStudentSceneCont, "scene-cont");
 
         //Labels
         //TextField
@@ -429,6 +434,10 @@ written together for readability and ease of maintenance
         linkStyle(creditsAttemptedTF, "number-tf");
         linkStyle(creditsRemainingTF, "number-tf");
 
+        //Setting scene and show
+        newStudentStage.setScene(newStudentScene);
+        newStudentStage.initModality(Modality.APPLICATION_MODAL);
+        newStudentStage.showAndWait();
 
         return newStudentScene;
     }
@@ -448,10 +457,131 @@ written together for readability and ease of maintenance
         });
     }
 
-    private void createNewBtnsHandler(Button submit, Button cancel, Stage stage){
+    private void validationListeners(ArrayList<TextField> createSceneTFs, TextField fNameTF,
+                                     TextField lNameTF, TextField emailTF, PasswordField pf, PasswordField confirmPF,
+                                     TextField gpaTF, TextField earnedHrsTF, TextField attHours, TextField remainHrs,
+                                     ComboBox<String> classificationCB, Validation v){
+
+        //Removes red border if previously empty field is filled
+        for(TextField tf : createSceneTFs){
+            tf.textProperty().addListener((obs, oldVal, newVal)->{
+                if (!newVal.isEmpty()){
+                    v.validInput(tf);
+                }
+            });
+        }
+
+        //Removes red border if textfield previously not meeting letter-only requirement is made to meet requirement
+        fNameTF.textProperty().addListener((obs, oldVal, newVal) ->{
+            if(!newVal.isEmpty() && v.containsOnlyLetters(fNameTF)){
+                v.validInput(fNameTF);
+            }
+        });
+
+        //Removes red border if textfield previously not meeting letter-only requirement is made to meet requirement
+        lNameTF.textProperty().addListener((obs, oldVal, newVal) ->{
+            if(!newVal.isEmpty() && v.containsOnlyLetters(lNameTF)){
+                v.validInput(lNameTF);
+            }
+        });
+
+        //Removes red border if textfield previously not meeting email format requirement is made to meet requirement
+        emailTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && v.isValidEmail(emailTF)){
+                v.validInput(emailTF);
+            }
+        });
+
+        //Removes red border if previously unequal fields are made equal
+        confirmPF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && pf.getText().equals(confirmPF.getText())){
+                v.validInput(confirmPF);
+            }
+        });
+
+        //Removes red border if textfield previously not meeting password requirements is made to meet requirement
+        pf.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && v.isPasswordValid(pf)){
+                v.validInput(pf);
+            }
+        });
+
+        //Removes red border if combobox previously w/o a selection made is made to meet requirement
+        classificationCB.getEditor().textProperty().addListener((obs, oldVale, newVal)->{
+            if(!newVal.isEmpty() && v.isSelectionMade(classificationCB)){
+                v.validInput(classificationCB);
+            }
+        });
+
+        //Removes red border if textfield previously not meeting gpa requirements is made to meet requirement
+        //Removes red border if textfield previously not meeting non-neg number requirement is made to meet requirement
+        //Removes red border if textfields previously not meeting earnedHrs < attHours is made to meet requirement
+        //
+    }
+
+
+    private boolean areAllInputsValid(TextField idTF, TextField fNameTF, TextField lNameTF, TextField emailTF,
+                                   PasswordField pf, PasswordField confirmPF, TextField gpaTF, TextField earnedHrsTF,
+                                   TextField attHours, TextField remainHrs, ComboBox<String> classificationCB,
+                                      Scene createScene){
+
+        Validation v = new Validation();
+        ArrayList<TextField> createSceneTFs = new ArrayList<>();
+        boolean areAllInputsValid = false;
+
+        createSceneTFs.add(idTF);
+        createSceneTFs.add(fNameTF);
+        createSceneTFs.add(lNameTF);
+        createSceneTFs.add(emailTF);
+        createSceneTFs.add(pf);
+        createSceneTFs.add(confirmPF);
+        createSceneTFs.add(gpaTF);
+        createSceneTFs.add(earnedHrsTF);
+        createSceneTFs.add(attHours);
+        createSceneTFs.add(remainHrs);
+
+        validationListeners(createSceneTFs, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF, attHours,
+                remainHrs, classificationCB, v);
+
+        if(!v.isFieldEmpty(createSceneTFs)){
+            if(v.containsOnlyLetters(fNameTF) && v.containsOnlyLetters(lNameTF)){
+                if(v.isValidEmail(emailTF)){
+                    if(v.isPasswordValid(pf)){
+                        if(v.areFieldsEqual(pf, confirmPF)){
+                            if(v.isValidGPA(gpaTF)){
+                                if(v.containsOnlyNumbers(earnedHrsTF) && v.isNonNegativeNum(earnedHrsTF)){
+                                    if(v.containsOnlyNumbers(attHours) && v.isNonNegativeNum(attHours)){
+                                        if(v.isErnUnderAtt(earnedHrsTF, attHours)){
+                                            if(v.containsOnlyNumbers(remainHrs) && v.isNonNegativeNum(remainHrs)) {
+                                                if(v.isSelectionMade(classificationCB)){
+                                                    areAllInputsValid = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return areAllInputsValid;
+    }
+
+    private void createNewBtnsHandler(Button submit, Button cancel, Stage stage, TextField idTF, TextField fNameTF,
+                                      TextField lNameTF, TextField emailTF, PasswordField pf, PasswordField confirmPF,
+                                      TextField gpaTF, TextField earnedHrsTF, TextField attHours, TextField remainHrs,
+                                      ComboBox<String> classificationCB, Scene createScene, Stage createStage){
 
         submit.setOnAction(e->{
+            boolean allInputsValid = areAllInputsValid(idTF, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF,
+                                                       attHours, remainHrs, classificationCB, createScene);
 
+            if(allInputsValid){
+                createStage.close();
+            }
         });
 
         cancel.setOnAction(e->{
@@ -464,7 +594,8 @@ written together for readability and ease of maintenance
             dragWindow(titleBar, cancelEnrollStage);
 
             //Label
-            Label confirmCx = new Label("Are you sure you wish to cancel registration?\nProgress will not be saved.");
+            Label confirmCx = new Label("Are you sure you wish to cancel registration? Progress will not be saved.");
+            confirmCx.setWrapText(true);
             HBox confirmCxLblCont = new HBox(confirmCx);
 
             //Buttons
