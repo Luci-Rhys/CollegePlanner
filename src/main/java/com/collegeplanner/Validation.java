@@ -1,25 +1,74 @@
 package com.collegeplanner;
 
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
-public class Validation {
+public class Validation{
+
+    public Validation(){
+    }
 
     //Checks if contents of two text fields are equal (case-sensitive)
     public boolean areFieldsEqual(TextField tf1, TextField tf2){
+        boolean areFieldsEqual;
+
         String str1 = tf1.getText();
         String str2 = tf2.getText();
 
-        return str1.equals(str2);
+        if(!str1.equals(str2)){
+            areFieldsEqual = false;
+            invalidInput(tf2);
+        }
+        else {
+            areFieldsEqual = true;
+        }
+
+        return areFieldsEqual;
     }
 
     //Checks if a textfield is empty
-    public boolean isFieldEmpty(TextField tf){
-        String tfStr = tf.getText();
+    public boolean isFieldEmpty(ArrayList<TextField> textfields) {
+        boolean emptyFieldsExist = false;
 
-        return tfStr.isEmpty();
+        for (TextField tf : textfields) {
+            if (tf.getText().isEmpty()) {
+                emptyFieldsExist = true;
+                invalidInput(tf);
+            }
+        }
+        return emptyFieldsExist;
+    }
+
+    public boolean containsOnlyLetters(TextField tf){
+        boolean containsOnlyLetters = false;
+        String tfInput = tf.getText();
+
+        if(Pattern.matches("^[a-zA-Z]*$", tfInput)){
+            containsOnlyLetters = true;
+        }
+        else
+            invalidInput(tf);
+
+        return containsOnlyLetters;
+    }
+
+    public boolean containsOnlyNumbers(TextField tf){
+        boolean containsOnlyNumbers = false;
+        String tfInput = tf.getText();
+
+        if(Pattern.matches("^[0-9]+", tfInput)){
+            containsOnlyNumbers = true;
+        }
+        else
+            invalidInput(tf);
+
+        return containsOnlyNumbers;
     }
 
 
@@ -35,17 +84,79 @@ public class Validation {
         }
         catch (AddressException e){
             isValid = false;
+            invalidInput(emailTF);
         }
         return isValid;
     }
 
     //Method checks if password is equal to or more than 9 characters and does not contain invalid symbols or characters
+    public boolean isPasswordValid(PasswordField pf){
+        boolean isPasswordValid = false;
+        String password = pf.getText();
+
+        if(password.length() >= 9 && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])(?!.*[^\\w~!@#$%^&*]).{9,}$")){
+            isPasswordValid = true;
+        }
+        else
+            invalidInput(pf);
+
+        return isPasswordValid;
+    }
 
     //Checks if the GPA entered is less than/equal to 0.0 and less than/equal to 4.0
     public boolean isValidGPA(TextField gpaTF){
-        double gpa = (Double.parseDouble(gpaTF.getText()));
+        String gpaStr = gpaTF.getText();
+        double gpa = Double.parseDouble(gpaStr);
+        boolean isValidGPA = false;
 
-        return (gpa >= 0.0 && gpa <= 4.0);
+        if(Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.0 && gpa <= 4.0){
+            isValidGPA = true;
+        }
+        else
+            invalidInput(gpaTF);
+
+        return isValidGPA;
     }
 
+    public boolean isNonNegativeNum(TextField tf){
+        boolean isNonNegativeNum = false;
+        double tfInput = Double.parseDouble(tf.getText());
+
+        if(tfInput >= 0){
+            isNonNegativeNum = true;
+        }
+        else
+            invalidInput(tf);
+
+        return isNonNegativeNum;
+    }
+
+    //Checks if the number of hours earned is below the number of hours attempted
+    public boolean isErnUnderAtt(TextField erndHrsTF, TextField attHrsTF){
+        int earnedHrs = Integer.parseInt(erndHrsTF.getText());
+        int attemptHrs = Integer.parseInt(attHrsTF.getText());
+
+        return earnedHrs <= attemptHrs;
+    }
+
+    public boolean isSelectionMade(ComboBox<String> cb){
+        boolean isSelectionMade = false;
+
+        if(!cb.getSelectionModel().isEmpty()){
+            isSelectionMade = true;
+        }
+        else
+            invalidInput(cb);
+
+        return isSelectionMade;
+    }
+
+    private void invalidInput(Node node){
+        node.setStyle("-fx-border-color: red;"
+                      + "-fx-border-width: 2px;");
+    }
+
+    public void validInput(Node node) {
+        node.setStyle("");
+    }
 }
