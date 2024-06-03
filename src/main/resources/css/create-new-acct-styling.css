@@ -36,15 +36,31 @@ ComboBox {
 .student-info-cont{
     -fx-spacing: 100px;
     -fx-alignment: center;
-    -fx-padding: 0px 0px 40px 0px;
+    -fx-padding: 0px 0px 20px 90px;
+}
+
+.unval-cont{
+    -fx-spacing: 45px;
+}
+
+.val-cont{
+    -fx-spacing: 35px;
 }
 
 .left-hand-cont{
-    -fx-spacing: 35px;
+    -fx-spacing: 50px;
+}
+
+.right-val-cont{
+    -fx-spacing: 21px;
+    -fx-padding: 0px 0px 20px 0px;
+}
+
+.right-unval-cont{
+    -fx-spacing: 50px;
 }
 
 .right-hand-cont{
-    -fx-spacing: 35px;
 }
 
 .scene-lbl-cont{
@@ -75,11 +91,22 @@ TextField, PasswordField {
     -fx-min-height: 16px;
 }
 
+
+
 /* Labels */
 
 Label{
     -fx-font-size: 15px;
     -fx-font-family: "Georgia";
+}
+
+.invalid-input-lbl {
+    -fx-fill: red;
+    -fx-font-size: 15px;
+}
+
+.lbl-adj{
+    -fx-padding: 8px 0px 0px 0px;
 }
 
 .student-info-lbl {
@@ -91,4 +118,8 @@ Label{
 .confirm-cx-label{
     -fx-font-size: 20px;
     -fx-text-wrap: true;
+}
+
+.empty-err-lbl{
+    -fx-padding: 60px 55px 0px 0px;
 }

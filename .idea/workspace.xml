@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="initial commit">
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="removed unnecessary global variables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/validation-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/validation-styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +118,7 @@
       <workItem from="1715960685075" duration="12754000" />
       <workItem from="1716047599836" duration="35516000" />
       <workItem from="1716350866529" duration="34473000" />
-      <workItem from="1716783717821" duration="57988000" />
+      <workItem from="1716783717821" duration="80141000" />
     </task>
     <task id="LOCAL-00001" summary="iniial commit and import from different project that had issues running">
       <option name="closed" value="true" />
@@ -459,7 +456,47 @@
       <option name="project" value="LOCAL" />
       <updated>1716790507559</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="added css for combobox and rhe scene container">
+      <option name="closed" value="true" />
+      <created>1717213518950</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1717213518950</updated>
+    </task>
+    <task id="LOCAL-00044" summary="updated prompt text, added handler events for create new account scene, added validation listeners, added method to validate inputs of textfields">
+      <option name="closed" value="true" />
+      <created>1717213675305</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1717213675305</updated>
+    </task>
+    <task id="LOCAL-00045" summary="added validation methods for containing only numbers and letters, valid password, valid gpa, nonnegative numbers, earned under attempted, and inline css for valid and invalid inputs">
+      <option name="closed" value="true" />
+      <created>1717213803027</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1717213803027</updated>
+    </task>
+    <task id="LOCAL-00046" summary="deleted validation styles">
+      <option name="closed" value="true" />
+      <created>1717213868753</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1717213868753</updated>
+    </task>
+    <task id="LOCAL-00047" summary="removed unnecessary global variables">
+      <option name="closed" value="true" />
+      <created>1717213921946</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1717213921946</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,11 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added private variables" />
-    <MESSAGE value="initial commit of inner class grade category, and addition of updategrade and calculate assignment grade" />
-    <MESSAGE value="added empty constructor" />
-    <MESSAGE value="added instance variables and initial commit of courseinfo inner class" />
-    <MESSAGE value="added instance variables, constructor, and getters and setters" />
     <MESSAGE value="initial commit of logo" />
     <MESSAGE value="removed stage parameter from constructor in attempt to fix dragWindow issue not working for exitStage" />
     <MESSAGE value="changed name of class to student, added more variables and empty createUser method" />
@@ -514,6 +546,11 @@
     <MESSAGE value="update after addition of javax.mail library" />
     <MESSAGE value="addition of methods checking for empty and mismatched fields, valid email input, and valid GPA input" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="added css for combobox and rhe scene container" />
+    <MESSAGE value="updated prompt text, added handler events for create new account scene, added validation listeners, added method to validate inputs of textfields" />
+    <MESSAGE value="added validation methods for containing only numbers and letters, valid password, valid gpa, nonnegative numbers, earned under attempted, and inline css for valid and invalid inputs" />
+    <MESSAGE value="deleted validation styles" />
+    <MESSAGE value="removed unnecessary global variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary global variables" />
   </component>
 </project>
