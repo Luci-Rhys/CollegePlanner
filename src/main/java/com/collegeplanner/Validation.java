@@ -2,6 +2,7 @@ package com.collegeplanner;
 
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javax.mail.internet.AddressException;
@@ -33,14 +34,19 @@ public class Validation{
     }
 
     //Checks if a textfield is empty
-    public boolean isFieldEmpty(ArrayList<TextField> textfields) {
+    public boolean isFieldEmpty(ArrayList<TextField> textfields, Label errLabel) {
         boolean emptyFieldsExist = false;
 
         for (TextField tf : textfields) {
             if (tf.getText().isEmpty()) {
                 emptyFieldsExist = true;
                 invalidInput(tf);
+                showLbl(errLabel);
             }
+        }
+
+        if(!emptyFieldsExist){
+            hideLbl(errLabel);
         }
         return emptyFieldsExist;
     }
@@ -58,22 +64,8 @@ public class Validation{
         return containsOnlyLetters;
     }
 
-    public boolean containsOnlyNumbers(TextField tf){
-        boolean containsOnlyNumbers = false;
-        String tfInput = tf.getText();
-
-        if(Pattern.matches("^[0-9]+", tfInput)){
-            containsOnlyNumbers = true;
-        }
-        else
-            invalidInput(tf);
-
-        return containsOnlyNumbers;
-    }
-
-
     //Checks if the user provided email fits valid email format
-    public boolean isValidEmail(TextField emailTF){
+    public boolean isValidEmail(TextField emailTF, Label errLabel){
         String emailAddress = emailTF.getText();
 
         boolean isValid = true;
@@ -85,51 +77,44 @@ public class Validation{
         catch (AddressException e){
             isValid = false;
             invalidInput(emailTF);
+            showLbl(errLabel);
         }
         return isValid;
     }
 
     //Method checks if password is equal to or more than 9 characters and does not contain invalid symbols or characters
-    public boolean isPasswordValid(PasswordField pf){
+    public boolean isPasswordValid(PasswordField pf, Label errLabel){
         boolean isPasswordValid = false;
         String password = pf.getText();
 
         if(password.length() >= 9 && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])(?!.*[^\\w~!@#$%^&*]).{9,}$")){
             isPasswordValid = true;
+            hideLbl(errLabel);
         }
         else
             invalidInput(pf);
+            showLbl(errLabel);
 
         return isPasswordValid;
     }
 
     //Checks if the GPA entered is less than/equal to 0.0 and less than/equal to 4.0
-    public boolean isValidGPA(TextField gpaTF){
+    public boolean isValidGPA(TextField gpaTF, Label errLabel){
         String gpaStr = gpaTF.getText();
         double gpa = Double.parseDouble(gpaStr);
         boolean isValidGPA = false;
 
         if(Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.0 && gpa <= 4.0){
             isValidGPA = true;
+            hideLbl(errLabel);
         }
         else
             invalidInput(gpaTF);
+            showLbl(errLabel);
 
         return isValidGPA;
     }
 
-    public boolean isNonNegativeNum(TextField tf){
-        boolean isNonNegativeNum = false;
-        double tfInput = Double.parseDouble(tf.getText());
-
-        if(tfInput >= 0){
-            isNonNegativeNum = true;
-        }
-        else
-            invalidInput(tf);
-
-        return isNonNegativeNum;
-    }
 
     //Checks if the number of hours earned is below the number of hours attempted
     public boolean isErnUnderAtt(TextField erndHrsTF, TextField attHrsTF){
@@ -154,9 +139,19 @@ public class Validation{
     private void invalidInput(Node node){
         node.setStyle("-fx-border-color: red;"
                       + "-fx-border-width: 2px;");
+
+
     }
 
     public void validInput(Node node) {
         node.setStyle("");
+    }
+
+    public void hideLbl(Label label){
+        label.setVisible(false);
+    }
+
+    public void showLbl(Label label){
+        label.setVisible(true);
     }
 }
