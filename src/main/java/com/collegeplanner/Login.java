@@ -11,11 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.awt.color.ICC_ColorSpace;
 import java.util.ArrayList;
 
 public class Login extends Window {
@@ -326,22 +328,35 @@ written together for readability and ease of maintenance
         Label email = new Label("Email");
         TextField emailTF = new TextField();
         emailTF.setPromptText("enter personal email");
-        VBox emailCont = new VBox(email, emailTF);
+        Text emailFormatErr = new Text("Input must be in email format");
+        TextFlow emailFormFlow = new TextFlow(emailFormatErr);
+        emailFormFlow.setTextAlignment(TextAlignment.CENTER);
+        Label emailErrLbl = new Label();
+        emailErrLbl.setGraphic(emailFormFlow);
+        emailErrLbl.setVisible(false);
+        VBox emailCont = new VBox(email, emailTF, emailErrLbl);
 
         //Password
         Label password = new Label("Password");
         PasswordField passwordTF = new PasswordField();
         passwordTF.setPromptText("enter password");
-        VBox passwordCont = new VBox(password, passwordTF);
+        Text pwReqErr = new Text("Password does not meet requirements");
+        TextFlow pwReqFlow = new TextFlow(pwReqErr);
+        Label pwErrLbl = new Label();
+        pwErrLbl.setGraphic(pwReqFlow);
+        pwErrLbl.setVisible(false);
+        VBox passwordCont = new VBox(password, passwordTF, pwErrLbl);
 
         //Confirm Password
         Label confirmPW = new Label("Confirm Password");
         PasswordField confirmPWTF = new PasswordField();
         confirmPWTF.setPromptText("re-enter password");
-        VBox confirmPWCont = new VBox(confirmPW, confirmPWTF);
-
-        //Password HBox Container
-        VBox pwCont = new VBox(passwordCont, confirmPWCont);
+        Text pwMismatch = new Text("Passwords do not match");
+        TextFlow mismatchFlow = new TextFlow(pwMismatch);
+        Label mismatchLbl = new Label();
+        mismatchLbl.setGraphic(mismatchFlow);
+        mismatchLbl.setVisible(false);
+        VBox confirmPWCont = new VBox(confirmPW, confirmPWTF, mismatchLbl);
 
         //Student Classification
         Label classLabel = new Label("Student Classification");
@@ -354,13 +369,23 @@ written together for readability and ease of maintenance
         Label gpaLabel = new Label("Grade Point Average (GPA)");
         TextField gpaTF = new TextField();
         gpaTF.setPromptText("enter GPA");
-        VBox gpaCont = new VBox(gpaLabel, gpaTF);
+        Text gpaVal = new Text("GPA must be a value between 0.0 and 4.0");
+        TextFlow gpaErrFlow = new TextFlow(gpaVal);
+        Label gpaErrLbl = new Label();
+        gpaErrLbl.setGraphic(gpaErrFlow);
+        gpaErrLbl.setVisible(false);
+        VBox gpaCont = new VBox(gpaLabel, gpaTF, gpaErrLbl);
 
         //Credits Earned
         Label creditsEarnedLabel = new Label("Credits Earned");
         TextField creditsEarnedTF = new TextField();
         creditsEarnedTF.setPromptText("credits earned");
-        VBox creditsEarnedCont = new VBox(creditsEarnedLabel, creditsEarnedTF);
+        Text creditsValErr = new Text("Earned hours must not exceed attempted hours");
+        TextFlow earnedErrFlow = new TextFlow(creditsValErr);
+        Label earnedErrLbl = new Label();
+        earnedErrLbl.setGraphic(earnedErrFlow);
+        earnedErrLbl.setVisible(false);
+        VBox creditsEarnedCont = new VBox(creditsEarnedLabel, creditsEarnedTF, earnedErrLbl);
 
         //Credits Attempted
         Label creditsAttemptedLabel = new Label("Credits Attempted");
@@ -374,8 +399,15 @@ written together for readability and ease of maintenance
         creditsRemainingTF.setPromptText("credits remaining");
         VBox creditsRemainingCont = new VBox(creditsRemainingLabel, creditsRemainingTF);
 
-        //GPA and credits info container
-        VBox creditsAndGPACont = new VBox(gpaCont, creditsEarnedCont, creditsAttemptCont, creditsRemainingCont);
+        //Empty fields error label
+        Text emptyFields = new Text("All highlighted fields must be completed");
+        TextFlow emptyErrFlow = new TextFlow(emptyFields);
+        emptyErrFlow.setTextAlignment(TextAlignment.CENTER);
+        Label emptyErrLbl = new Label();
+        emptyErrLbl.setGraphic(emptyErrFlow);
+        emptyErrLbl.setVisible(false);
+        HBox emptyErrLblCont = new HBox(emptyErrLbl);
+
 
         //Buttons
         Button submitBtn = new Button("Submit");
@@ -386,10 +418,14 @@ written together for readability and ease of maintenance
          */
 
         //Left hand side of container
-        VBox leftHand = new VBox(studentIdCont, firstNameCont, lastNameCont, emailCont, passwordCont, confirmPWCont);
+        VBox leftUnvalCont = new VBox(studentIdCont, firstNameCont, lastNameCont);
+        VBox leftValCont = new VBox(emailCont, passwordCont, confirmPWCont);
+        VBox leftHand = new VBox(leftUnvalCont, leftValCont);
 
         //Right hand side of createNewStudent
-        VBox rightHand = new VBox(gpaCont, creditsEarnedCont, creditsAttemptCont, creditsRemainingCont, classificationCont);
+        VBox rightValCont = new VBox(gpaCont, creditsEarnedCont);
+        VBox rightUnvalCont = new VBox(creditsAttemptCont, creditsRemainingCont, classificationCont);
+        VBox rightHand = new VBox(rightValCont, rightUnvalCont, emptyErrLblCont);
 
         //Buttons container
         HBox createBtnsCont = new HBox(submitBtn, cancelBtn);
@@ -401,13 +437,15 @@ written together for readability and ease of maintenance
         VBox newStudentSceneCont = new VBox(titleBar, sceneLblCont, studentInfoCont, createBtnsCont);
 
         //Scene assignment
-        newStudentScene = new Scene(newStudentSceneCont, 600, 710);
+        newStudentScene = new Scene(newStudentSceneCont, 650, 780);
+
+        //Pre submit field listeners
+        preSubValListeners(firstNameTF, lastNameTF, creditsEarnedTF, creditsAttemptedTF, creditsRemainingTF, gpaTF);
 
         //Button handlers
-        createNewBtnsHandler(submitBtn, cancelBtn, newStudentStage, idTF, firstNameTF,
-                lastNameTF, emailTF, passwordTF, confirmPWTF,
-                gpaTF, creditsEarnedTF, creditsAttemptedTF, creditsRemainingTF,
-                classificationCB, newStudentScene, newStudentStage);
+        createNewBtnsHandler(submitBtn, cancelBtn, newStudentStage, idTF, firstNameTF, lastNameTF, emailTF, passwordTF,
+                confirmPWTF, gpaTF, creditsEarnedTF, creditsAttemptedTF, creditsRemainingTF, classificationCB,
+                newStudentScene, newStudentStage, emptyErrLbl, emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
         //Focus
         newStudentSceneCont.requestFocus();
@@ -423,11 +461,31 @@ written together for readability and ease of maintenance
         linkStyle(createBtnsCont, "btns-cont");
         linkStyle(studentInfo, "student-info-lbl");
         linkStyle(studentInfoCont, "student-info-cont");
+        linkStyle(leftUnvalCont, "unval-cont");
+        linkStyle(leftValCont, "val-cont");
         linkStyle(leftHand, "left-hand-cont");
+        linkStyle(rightValCont, "right-val-cont");
+        linkStyle(rightUnvalCont, "right-unval-cont");
         linkStyle(rightHand, "right-hand-cont");
         linkStyle(newStudentSceneCont, "scene-cont");
+        linkStyle(idTF, "textfield-cont-adj");
 
-        //Labels
+
+        //Label
+        linkStyle(pwErrLbl, "lbl-adj");
+        linkStyle(gpaErrLbl, "lbl-adj");
+        linkStyle(earnedErrLbl, "lbl-adj");
+        linkStyle(emptyErrLbl, "lbl-adj");
+        linkStyle(emptyErrLblCont, "empty-err-lbl");
+
+        //Invalid Input labels
+        linkStyle(emailFormatErr, "invalid-input-lbl");
+        linkStyle(pwReqErr, "invalid-input-lbl");
+        linkStyle(pwMismatch, "invalid-input-lbl");
+        linkStyle(gpaVal, "invalid-input-lbl");
+        linkStyle(creditsValErr, "invalid-input-lbl");
+        linkStyle(emptyFields, "invalid-input-lbl");
+
         //TextField
         linkStyle(gpaTF, "number-tf");
         linkStyle(creditsEarnedTF, "number-tf");
@@ -457,10 +515,58 @@ written together for readability and ease of maintenance
         });
     }
 
+    private void preSubValListeners(TextField fNameTF, TextField lNameTF, TextField earnedHrsTF, TextField attHoursTF,
+                                    TextField remainCredsTF, TextField gpaTF){
+
+        //Restricts values entered into field to letters only
+        fNameTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.matches("[A-Za-z]*")){
+                fNameTF.setText(newVal.replaceAll("[^A-Za-z]", ""));
+            }
+        });
+
+        //Restricts values entered into field to letters only
+        lNameTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.matches("[A-Za-z]*")){
+                lNameTF.setText(newVal.replaceAll("[^A-Za-z]", ""));
+            }
+        });
+
+        gpaTF.textProperty().addListener((obs, oldVal, newVal) -> {
+            if(!newVal.matches("\\d*\\.?\\d*")){
+                gpaTF.setText(oldVal);
+            }
+        });
+
+        //Restricts values entered into field to numbers only
+        earnedHrsTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.matches("\\d*")){
+                earnedHrsTF.setText(newVal.replaceAll("\\D", ""));
+            }
+        });
+
+        //Restricts values entered into field to numbers only
+        attHoursTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.matches("\\d*")){
+                attHoursTF.setText(newVal.replaceAll("\\D", ""));
+            }
+        });
+
+        //Restricts values entered into field to numbers only
+        remainCredsTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.matches("\\d*")){
+                remainCredsTF.setText(newVal.replaceAll("\\D", ""));
+            }
+        });
+    }
+
     private void validationListeners(ArrayList<TextField> createSceneTFs, TextField fNameTF,
                                      TextField lNameTF, TextField emailTF, PasswordField pf, PasswordField confirmPF,
                                      TextField gpaTF, TextField earnedHrsTF, TextField attHours, TextField remainHrs,
-                                     ComboBox<String> classificationCB, Validation v){
+                                     ComboBox<String> classificationCB, Validation v, Label emptyErrLbl,
+                                     Label emailErrLbl, Label pwErrLbl, Label mismatchLbl, Label gpaErrLbl,
+                                     Label earnedErrLbl){
+
 
         //Removes red border if previously empty field is filled
         for(TextField tf : createSceneTFs){
@@ -468,27 +574,27 @@ written together for readability and ease of maintenance
                 if (!newVal.isEmpty()){
                     v.validInput(tf);
                 }
+
+                boolean allFieldFilled = true;
+                for(TextField field : createSceneTFs){
+                    if(field.getText().isEmpty()){
+                        allFieldFilled = false;
+                        break;
+                    }
+                }
+
+                if(allFieldFilled){
+                    v.hideLbl(emptyErrLbl);
+                }
             });
         }
 
-        //Removes red border if textfield previously not meeting letter-only requirement is made to meet requirement
-        fNameTF.textProperty().addListener((obs, oldVal, newVal) ->{
-            if(!newVal.isEmpty() && v.containsOnlyLetters(fNameTF)){
-                v.validInput(fNameTF);
-            }
-        });
-
-        //Removes red border if textfield previously not meeting letter-only requirement is made to meet requirement
-        lNameTF.textProperty().addListener((obs, oldVal, newVal) ->{
-            if(!newVal.isEmpty() && v.containsOnlyLetters(lNameTF)){
-                v.validInput(lNameTF);
-            }
-        });
 
         //Removes red border if textfield previously not meeting email format requirement is made to meet requirement
         emailTF.textProperty().addListener((obs, oldVal, newVal)->{
-            if(!newVal.isEmpty() && v.isValidEmail(emailTF)){
+            if(!newVal.isEmpty() && v.isValidEmail(emailTF, emailErrLbl)){
                 v.validInput(emailTF);
+                v.hideLbl(emailErrLbl);
             }
         });
 
@@ -501,8 +607,9 @@ written together for readability and ease of maintenance
 
         //Removes red border if textfield previously not meeting password requirements is made to meet requirement
         pf.textProperty().addListener((obs, oldVal, newVal)->{
-            if(!newVal.isEmpty() && v.isPasswordValid(pf)){
+            if(!newVal.isEmpty() && v.isPasswordValid(pf, pwErrLbl)){
                 v.validInput(pf);
+                v.hideLbl(pwErrLbl);
             }
         });
 
@@ -523,7 +630,8 @@ written together for readability and ease of maintenance
     private boolean areAllInputsValid(TextField idTF, TextField fNameTF, TextField lNameTF, TextField emailTF,
                                    PasswordField pf, PasswordField confirmPF, TextField gpaTF, TextField earnedHrsTF,
                                    TextField attHours, TextField remainHrs, ComboBox<String> classificationCB,
-                                      Scene createScene){
+                                   Scene createScene, Label emptyErrLbl, Label emailErrLbl, Label pwErrLbl,
+                                   Label mismatchLbl, Label gpaErrLbl, Label earnedErrLbl){
 
         Validation v = new Validation();
         ArrayList<TextField> createSceneTFs = new ArrayList<>();
@@ -541,31 +649,11 @@ written together for readability and ease of maintenance
         createSceneTFs.add(remainHrs);
 
         validationListeners(createSceneTFs, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF, attHours,
-                remainHrs, classificationCB, v);
+                remainHrs, classificationCB, v, emptyErrLbl, emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
-        if(!v.isFieldEmpty(createSceneTFs)){
-            if(v.containsOnlyLetters(fNameTF) && v.containsOnlyLetters(lNameTF)){
-                if(v.isValidEmail(emailTF)){
-                    if(v.isPasswordValid(pf)){
-                        if(v.areFieldsEqual(pf, confirmPF)){
-                            if(v.isValidGPA(gpaTF)){
-                                if(v.containsOnlyNumbers(earnedHrsTF) && v.isNonNegativeNum(earnedHrsTF)){
-                                    if(v.containsOnlyNumbers(attHours) && v.isNonNegativeNum(attHours)){
-                                        if(v.isErnUnderAtt(earnedHrsTF, attHours)){
-                                            if(v.containsOnlyNumbers(remainHrs) && v.isNonNegativeNum(remainHrs)) {
-                                                if(v.isSelectionMade(classificationCB)){
-                                                    areAllInputsValid = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
+        if(!v.isFieldEmpty(createSceneTFs, emptyErrLbl) && v.isValidEmail(emailTF, emailErrLbl) && v.isPasswordValid(pf, pwErrLbl) && v.areFieldsEqual(pf, confirmPF)
+            && v.isValidGPA(gpaTF, gpaErrLbl) && v.isErnUnderAtt(earnedHrsTF, attHours) && v.isSelectionMade(classificationCB)){
+            areAllInputsValid = true;
         }
         return areAllInputsValid;
     }
@@ -573,11 +661,14 @@ written together for readability and ease of maintenance
     private void createNewBtnsHandler(Button submit, Button cancel, Stage stage, TextField idTF, TextField fNameTF,
                                       TextField lNameTF, TextField emailTF, PasswordField pf, PasswordField confirmPF,
                                       TextField gpaTF, TextField earnedHrsTF, TextField attHours, TextField remainHrs,
-                                      ComboBox<String> classificationCB, Scene createScene, Stage createStage){
+                                      ComboBox<String> classificationCB, Scene createScene, Stage createStage, Label emptyErrLbl,
+                                      Label emailErrLbl, Label pwErrLbl, Label mismatchLbl, Label gpaErrLbl,
+                                      Label earnedErrLbl){
 
         submit.setOnAction(e->{
             boolean allInputsValid = areAllInputsValid(idTF, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF,
-                                                       attHours, remainHrs, classificationCB, createScene);
+                                                       attHours, remainHrs, classificationCB, createScene, emptyErrLbl,
+                                                        emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
             if(allInputsValid){
                 createStage.close();
@@ -594,9 +685,12 @@ written together for readability and ease of maintenance
             dragWindow(titleBar, cancelEnrollStage);
 
             //Label
-            Label confirmCx = new Label("Are you sure you wish to cancel registration? Progress will not be saved.");
-            confirmCx.setWrapText(true);
-            HBox confirmCxLblCont = new HBox(confirmCx);
+            TextFlow textFlow = new TextFlow();
+            Text confirmCx = new Text("Are you sure you wish to cancel registration? Progress will not be saved.");
+            textFlow.getChildren().add(confirmCx);
+            textFlow.setTextAlignment(TextAlignment.CENTER);
+
+            HBox confirmCxLblCont = new HBox(textFlow);
 
             //Buttons
             Button cancelEnrollment = new Button("Yes");
