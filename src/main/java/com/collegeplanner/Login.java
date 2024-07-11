@@ -1,6 +1,5 @@
 package com.collegeplanner;
 
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +16,12 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.util.ArrayList;
+
+/*
+This class contains all code (excluding CSS located in stylesheets) related to the login scene and its controls,
+create account scene and its controls, and the forgot password scene and its controls
+ */
 
 public class Login extends Window {
     Scene loginScene;
@@ -293,7 +296,7 @@ public class Login extends Window {
 Creates the scene that populates when create account button is clicked, labels and their respective fields are
 written together for readability and ease of maintenance
  */
-    private Scene createNewStudentScene(Stage newStudentStage){
+    public Scene createNewStudentScene(Stage newStudentStage){
         Scene newStudentScene;
         newStudentStage = new Stage(StageStyle.UNDECORATED);
 
@@ -437,7 +440,7 @@ written together for readability and ease of maintenance
         VBox newStudentSceneCont = new VBox(titleBar, sceneLblCont, studentInfoCont, createBtnsCont);
 
         //Scene assignment
-        newStudentScene = new Scene(newStudentSceneCont, 650, 780);
+        newStudentScene = new Scene(newStudentSceneCont, 650, 825);
 
         //Pre submit field listeners
         preSubValListeners(firstNameTF, lastNameTF, creditsEarnedTF, creditsAttemptedTF, creditsRemainingTF, gpaTF);
@@ -454,7 +457,8 @@ written together for readability and ease of maintenance
         //CSS stylesheet
         linkStyleSheet("/css/create-new-acct-styling.css", newStudentScene);
         //Buttons
-
+        linkStyle(cancelBtn, "create-cx-btn");
+        linkStyle(submitBtn, "submit");
         //Containers
         linkStyle(titleBar, "title-bar");
         linkStyle(sceneLblCont, "scene-lbl-cont");
@@ -495,7 +499,7 @@ written together for readability and ease of maintenance
         //Setting scene and show
         newStudentStage.setScene(newStudentScene);
         newStudentStage.initModality(Modality.APPLICATION_MODAL);
-        newStudentStage.showAndWait();
+        newStudentStage.show();
 
         return newStudentScene;
     }
@@ -591,11 +595,15 @@ written together for readability and ease of maintenance
 
 
         //Removes red border if textfield previously not meeting email format requirement is made to meet requirement
-        emailTF.textProperty().addListener((obs, oldVal, newVal)->{
-            if(!newVal.isEmpty() && v.isValidEmail(emailTF, emailErrLbl)){
+        emailTF.focusedProperty().addListener((obs, oldVal, newVal)->{
+            if(newVal && !emailTF.getText().isEmpty()){
+                v.hideLbl(emailErrLbl);
+            }
+            else if(!newVal && v.isValidEmail(emailTF, emailErrLbl)){
                 v.validInput(emailTF);
                 v.hideLbl(emailErrLbl);
             }
+
         });
 
         //Removes red border if previously unequal fields are made equal
@@ -677,6 +685,7 @@ written together for readability and ease of maintenance
 
         cancel.setOnAction(e->{
             Stage cancelEnrollStage = new Stage(StageStyle.UNDECORATED);
+            cancelEnrollStage.initModality(Modality.APPLICATION_MODAL);
             Scene cancelEnrollScene;
 
             //Window titlebar and Label w/ dragWindow method
@@ -701,10 +710,9 @@ written together for readability and ease of maintenance
             VBox cxEnrollCont = new VBox(titleBar, confirmCxLblCont, cxEnrollBtns);
 
             //Scene assignment
-            cancelEnrollScene = new Scene(cxEnrollCont, 600, 200);
+            cancelEnrollScene = new Scene(cxEnrollCont, 600, 220);
             cancelEnrollStage.setScene(cancelEnrollScene);
             cancelEnrollStage.show();
-
 
             //Button event handlers
             cancelEnrollment.setOnAction(event->{
@@ -720,10 +728,12 @@ written together for readability and ease of maintenance
             linkStyleSheet("/css/create-new-acct-styling.css", cancelEnrollScene);
 
             //Buttons
+
             //Containers
             linkStyle(titleBar, "title-bar");
             linkStyle(cxEnrollBtns, "btns-cont");
             linkStyle(cxEnrollCont, "cx-enroll-cont");
+            linkStyle(cxEnrollCont, "cx-scene-cont");
             linkStyle(cxEnrollBtns, "cx-enroll-btns-cont");
             linkStyle(confirmCxLblCont, "confirm-cx-lbl-cont");
             //Labels
