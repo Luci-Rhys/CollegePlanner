@@ -5,16 +5,60 @@ Button {
     -fx-font-weight: 700;
     -fx-background-radius: 30px;
     -fx-padding: 7px 30px;
+    -fx-cursor: hand;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-color: white;
 }
+
+.create-cx-btn {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.create-cx-btn:hover {
+    -fx-background-color: red;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.submit {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.submit:hover{
+    -fx-background-color: green;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.cx-btn{
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+}
+
 /* ComboBox */
 ComboBox {
     -fx-font-size: 15px;
     -fx-font-family: Georgia;
+    -fx-background-color: white;
+    -fx-border-color: #C5DBC4;
+    -fx-border-width: 3px;
 }
 
 /* Containers */
 .scene-cont{
-    -fx-background-color: #E6E6FA;
+    -fx-background-color: #E4F1EE;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.cx-scene-cont{
+    -fx-background-color: #B0E0E6;
     -fx-border-color: black;
     -fx-border-width: 2px;
 }
@@ -30,7 +74,7 @@ ComboBox {
 }
 
 .cx-enroll-btns-cont{
-    -fx-padding: 0px 0px 15px 0px
+    -fx-padding: 0px 0px 40px 0px
 }
 
 .student-info-cont{
@@ -68,7 +112,7 @@ ComboBox {
 }
 
 cx-enroll-cont {
-    -fx-padding: 0px 10px 10px 10px;
+    -fx-background-color: black;
 }
 
 .confirm-cx-lbl-cont {
@@ -79,10 +123,12 @@ cx-enroll-cont {
 /* Fields */
 TextField, PasswordField {
     -fx-font-size: 16px;
+    -fx-min-height: 16px;
     -fx-min-width: 200px ;
     -fx-max-width: 200px;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
+    -fx-border-color: #C5DBC4;
+    -fx-border-width: 3px;
+    -fx-font-style: italic;
 }
 
 .number-tf {
@@ -118,6 +164,7 @@ Label{
 .confirm-cx-label{
     -fx-font-size: 20px;
     -fx-text-wrap: true;
+    -fx-font-family: Georgia;
 }
 
 .empty-err-lbl{
