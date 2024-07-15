@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="added error labels as parameters and removed unnecessary methods (containsOnly methods)">
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/CollegePlanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/CollegePlanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/create-new-acct-styling.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +39,9 @@
     &quot;accountId&quot;: &quot;269f1f87-54ba-48f2-aaa5-cc1ef1fbaf98&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -47,7 +50,8 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
+    <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -77,6 +81,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -121,23 +126,10 @@
       <workItem from="1716783717821" duration="80560000" />
       <workItem from="1717553886172" duration="9415000" />
       <workItem from="1718557494154" duration="633000" />
-      <workItem from="1720731874556" duration="3239000" />
-    </task>
-    <task id="LOCAL-00002" summary="iniial commit and import from different project that had issues running">
-      <option name="closed" value="true" />
-      <created>1715936962910</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1715936962910</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added constructor to contain a stage and removed the stage parameter from dragWindow method">
-      <option name="closed" value="true" />
-      <created>1716048869414</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1716048869414</updated>
+      <workItem from="1720731874556" duration="12905000" />
+      <workItem from="1720752606426" duration="300000" />
+      <workItem from="1720753387764" duration="2089000" />
+      <workItem from="1720761922599" duration="17900000" />
     </task>
     <task id="LOCAL-00004" summary="updated styling to resolve truncated &quot;or&quot; label">
       <option name="closed" value="true" />
@@ -515,7 +507,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717377474053</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="added &quot;animations&quot; and add'l css to buttons, changed background color for scene">
+      <option name="closed" value="true" />
+      <created>1720735575178</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1720735575178</updated>
+    </task>
+    <task id="LOCAL-00052" summary="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css">
+      <option name="closed" value="true" />
+      <created>1720735714558</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1720735714558</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,8 +553,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added constructor" />
-    <MESSAGE value="added css for toolbar" />
     <MESSAGE value="added exit functionality, updated perm logo, and removed super call" />
     <MESSAGE value="added exitStage" />
     <MESSAGE value="deleted temp placeholder logo" />
@@ -570,6 +576,8 @@
     <MESSAGE value="adding styling for validation error msgs and containers" />
     <MESSAGE value="added validation error messages to respective containers and listeners to add/remove labels as needed" />
     <MESSAGE value="added error labels as parameters and removed unnecessary methods (containsOnly methods)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added error labels as parameters and removed unnecessary methods (containsOnly methods)" />
+    <MESSAGE value="added &quot;animations&quot; and add'l css to buttons, changed background color for scene" />
+    <MESSAGE value="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css" />
+    <option name="LAST_COMMIT_MESSAGE" value="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css" />
   </component>
 </project>

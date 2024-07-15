@@ -119,7 +119,7 @@ public class Login extends Window {
 
         //Logo initialization
         Image logo = new Image(getClass().getResourceAsStream("/images/logo.png")); //temp placeholder, will be updated
-        ImageView logoView = new ImageView(logo);;
+        ImageView logoView = new ImageView(logo);
 
         //Separator initializations
         verDiv = new Separator(Orientation.VERTICAL);
@@ -269,7 +269,7 @@ public class Login extends Window {
         exitStage.show();
 
         //Button event handlers
-        confExitBtn.setOnAction(e -> {
+        confExitBtn.setOnAction(e ->{
             Platform.exit();
         });
 
@@ -572,23 +572,12 @@ written together for readability and ease of maintenance
                                      Label earnedErrLbl){
 
 
-        //Removes red border if previously empty field is filled
+
+        //Removes red border if previously empty field is filled and removes empty fields label
         for(TextField tf : createSceneTFs){
             tf.textProperty().addListener((obs, oldVal, newVal)->{
                 if (!newVal.isEmpty()){
                     v.validInput(tf);
-                }
-
-                boolean allFieldFilled = true;
-                for(TextField field : createSceneTFs){
-                    if(field.getText().isEmpty()){
-                        allFieldFilled = false;
-                        break;
-                    }
-                }
-
-                if(allFieldFilled){
-                    v.hideLbl(emptyErrLbl);
                 }
             });
         }
@@ -603,13 +592,17 @@ written together for readability and ease of maintenance
                 v.validInput(emailTF);
                 v.hideLbl(emailErrLbl);
             }
-
         });
 
         //Removes red border if previously unequal fields are made equal
+
         confirmPF.textProperty().addListener((obs, oldVal, newVal)->{
-            if(!newVal.isEmpty() && pf.getText().equals(confirmPF.getText())){
-                v.validInput(confirmPF);
+            if(!newVal.isEmpty()){
+                boolean pwMatch = newVal.equals(pf.getText());
+                if(pwMatch) {
+                    v.validInput(confirmPF);
+                    v.hideLbl(mismatchLbl);
+                }
             }
         });
 
@@ -622,16 +615,39 @@ written together for readability and ease of maintenance
         });
 
         //Removes red border if combobox previously w/o a selection made is made to meet requirement
-        classificationCB.getEditor().textProperty().addListener((obs, oldVale, newVal)->{
-            if(!newVal.isEmpty() && v.isSelectionMade(classificationCB)){
-                v.validInput(classificationCB);
+        classificationCB.valueProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty()){
+                classificationCB.setStyle("");
             }
+            v.hideLbl(emptyErrLbl);
         });
 
         //Removes red border if textfield previously not meeting gpa requirements is made to meet requirement
-        //Removes red border if textfield previously not meeting non-neg number requirement is made to meet requirement
+        gpaTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && v.isValidGPA(gpaTF, gpaErrLbl)){
+                v.validInput(gpaTF);
+                v.hideLbl(gpaErrLbl);
+            }
+        });
+
         //Removes red border if textfields previously not meeting earnedHrs < attHours is made to meet requirement
-        //
+        earnedHrsTF.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && v.isErnUnderAtt(earnedHrsTF, attHours, earnedErrLbl)){
+                v.validInput(earnedHrsTF);
+                v.validInput(attHours);
+                v.hideLbl(earnedErrLbl);
+            }
+        });
+
+        attHours.textProperty().addListener((obs, oldVal, newVal)->{
+            if(!newVal.isEmpty() && v.isErnUnderAtt(earnedHrsTF, attHours, earnedErrLbl)){
+                v.validInput(earnedHrsTF);
+                v.validInput(attHours);
+                v.hideLbl(earnedErrLbl);
+            }
+        });
+
+
     }
 
 
@@ -656,11 +672,12 @@ written together for readability and ease of maintenance
         createSceneTFs.add(attHours);
         createSceneTFs.add(remainHrs);
 
+
         validationListeners(createSceneTFs, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF, attHours,
                 remainHrs, classificationCB, v, emptyErrLbl, emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
-        if(!v.isFieldEmpty(createSceneTFs, emptyErrLbl) && v.isValidEmail(emailTF, emailErrLbl) && v.isPasswordValid(pf, pwErrLbl) && v.areFieldsEqual(pf, confirmPF)
-            && v.isValidGPA(gpaTF, gpaErrLbl) && v.isErnUnderAtt(earnedHrsTF, attHours) && v.isSelectionMade(classificationCB)){
+        if(!v.isFieldEmpty(createSceneTFs, classificationCB, emptyErrLbl) && v.isValidEmail(emailTF, emailErrLbl) && v.isPasswordValid(pf, pwErrLbl) && v.areFieldsEqual(pf, confirmPF, mismatchLbl)
+            && v.isValidGPA(gpaTF, gpaErrLbl) && v.isErnUnderAtt(earnedHrsTF, attHours, earnedErrLbl)){
             areAllInputsValid = true;
         }
         return areAllInputsValid;
@@ -674,6 +691,7 @@ written together for readability and ease of maintenance
                                       Label earnedErrLbl){
 
         submit.setOnAction(e->{
+
             boolean allInputsValid = areAllInputsValid(idTF, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF,
                                                        attHours, remainHrs, classificationCB, createScene, emptyErrLbl,
                                                         emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
@@ -684,6 +702,7 @@ written together for readability and ease of maintenance
         });
 
         cancel.setOnAction(e->{
+
             Stage cancelEnrollStage = new Stage(StageStyle.UNDECORATED);
             cancelEnrollStage.initModality(Modality.APPLICATION_MODAL);
             Scene cancelEnrollScene;
