@@ -16,7 +16,7 @@ public class Validation{
     }
 
     //Checks if contents of two text fields are equal (case-sensitive)
-    public boolean areFieldsEqual(TextField tf1, TextField tf2){
+    public boolean areFieldsEqual(TextField tf1, TextField tf2, Label errLbl){
         boolean areFieldsEqual;
 
         String str1 = tf1.getText();
@@ -24,6 +24,7 @@ public class Validation{
 
         if(!str1.equals(str2)){
             areFieldsEqual = false;
+            showLbl(errLbl);
             invalidInput(tf2);
         }
         else {
@@ -34,34 +35,27 @@ public class Validation{
     }
 
     //Checks if a textfield is empty
-    public boolean isFieldEmpty(ArrayList<TextField> textfields, Label errLabel) {
+    public boolean isFieldEmpty(ArrayList<TextField> textfields, ComboBox<String> cb, Label errLabel) {
         boolean emptyFieldsExist = false;
+        boolean emptyCB = true;
+
+        if(cb.getSelectionModel().getSelectedItem() == null){
+            emptyFieldsExist = true;
+            invalidInput(cb);
+        }
 
         for (TextField tf : textfields) {
             if (tf.getText().isEmpty()) {
                 emptyFieldsExist = true;
                 invalidInput(tf);
-                showLbl(errLabel);
             }
         }
 
-        if(!emptyFieldsExist){
-            hideLbl(errLabel);
+        if(emptyFieldsExist || emptyCB){
+            showLbl(errLabel);
         }
+
         return emptyFieldsExist;
-    }
-
-    public boolean containsOnlyLetters(TextField tf){
-        boolean containsOnlyLetters = false;
-        String tfInput = tf.getText();
-
-        if(Pattern.matches("^[a-zA-Z]*$", tfInput)){
-            containsOnlyLetters = true;
-        }
-        else
-            invalidInput(tf);
-
-        return containsOnlyLetters;
     }
 
     //Checks if the user provided email fits valid email format
@@ -70,6 +64,7 @@ public class Validation{
 
         boolean isValid = true;
 
+        //Adds border and displays error when conditions are false
         try{
             InternetAddress email = new InternetAddress(emailAddress);
             email.validate();
@@ -87,13 +82,14 @@ public class Validation{
         boolean isPasswordValid = false;
         String password = pf.getText();
 
+        //Adds border and displays error when conditions are false
         if(password.length() >= 9 && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])(?!.*[^\\w~!@#$%^&*]).{9,}$")){
             isPasswordValid = true;
-            hideLbl(errLabel);
         }
-        else
+        else {
             invalidInput(pf);
             showLbl(errLabel);
+        }
 
         return isPasswordValid;
     }
@@ -104,43 +100,37 @@ public class Validation{
         double gpa = Double.parseDouble(gpaStr);
         boolean isValidGPA = false;
 
-        if(Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.0 && gpa <= 4.0){
+        //Adds border and displays error when conditions are false
+        if(Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.00 && gpa <= 4.00){
             isValidGPA = true;
-            hideLbl(errLabel);
         }
-        else
+        else {
             invalidInput(gpaTF);
             showLbl(errLabel);
+        }
 
         return isValidGPA;
     }
 
-
     //Checks if the number of hours earned is below the number of hours attempted
-    public boolean isErnUnderAtt(TextField erndHrsTF, TextField attHrsTF){
+    public boolean isErnUnderAtt(TextField erndHrsTF, TextField attHrsTF, Label errLabel){
         int earnedHrs = Integer.parseInt(erndHrsTF.getText());
         int attemptHrs = Integer.parseInt(attHrsTF.getText());
+
+        //Adds border and displays error when conditions are false
+        if(!(earnedHrs <= attemptHrs)){
+            showLbl(errLabel);
+            invalidInput(erndHrsTF);
+            invalidInput(attHrsTF);
+        }
 
         return earnedHrs <= attemptHrs;
     }
 
-    public boolean isSelectionMade(ComboBox<String> cb){
-        boolean isSelectionMade = false;
-
-        if(!cb.getSelectionModel().isEmpty()){
-            isSelectionMade = true;
-        }
-        else
-            invalidInput(cb);
-
-        return isSelectionMade;
-    }
 
     private void invalidInput(Node node){
         node.setStyle("-fx-border-color: red;"
                       + "-fx-border-width: 2px;");
-
-
     }
 
     public void validInput(Node node) {
