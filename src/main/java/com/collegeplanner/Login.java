@@ -672,12 +672,20 @@ written together for readability and ease of maintenance
         createSceneTFs.add(attHours);
         createSceneTFs.add(remainHrs);
 
+        if(!v.isFieldEmpty(createSceneTFs, classificationCB, emptyErrLbl)) {
+            v.isValidEmail(emailTF, emailErrLbl);
+            v.isPasswordValid(pf, pwErrLbl);
+            v.areFieldsEqual(pf, confirmPF, mismatchLbl);
+            v.isValidGPA(gpaTF, gpaErrLbl);
+            v.isErnUnderAtt(earnedHrsTF, attHours, earnedErrLbl);
+        }
 
         validationListeners(createSceneTFs, fNameTF, lNameTF, emailTF, pf, confirmPF, gpaTF, earnedHrsTF, attHours,
                 remainHrs, classificationCB, v, emptyErrLbl, emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
         if(!v.isFieldEmpty(createSceneTFs, classificationCB, emptyErrLbl) && v.isValidEmail(emailTF, emailErrLbl) && v.isPasswordValid(pf, pwErrLbl) && v.areFieldsEqual(pf, confirmPF, mismatchLbl)
             && v.isValidGPA(gpaTF, gpaErrLbl) && v.isErnUnderAtt(earnedHrsTF, attHours, earnedErrLbl)){
+            v.hideLbl(emptyErrLbl);
             areAllInputsValid = true;
         }
         return areAllInputsValid;
@@ -697,6 +705,20 @@ written together for readability and ease of maintenance
                                                         emailErrLbl, pwErrLbl, mismatchLbl, gpaErrLbl, earnedErrLbl);
 
             if(allInputsValid){
+                String studentID = idTF.getText();
+                String studentFName = fNameTF.getText();
+                String studentLName = lNameTF.getText();
+                String studentEmail = emailTF.getText();
+                String studentPW = pf.getText();
+                double studentGPA = Double.parseDouble(gpaTF.getText());
+                int ernHours = Integer.parseInt(earnedHrsTF.getText());
+                int attemptedHrs = Integer.parseInt(attHours.getText());
+                int remHrs = Integer.parseInt(remainHrs.getText());
+                String studentClass = classificationCB.getSelectionModel().getSelectedItem();
+
+                Student newStudent = new Student(studentID, studentFName, studentLName, studentEmail, studentPW, studentClass,
+                        studentGPA, ernHours, attemptedHrs, remHrs, null);
+                
                 createStage.close();
             }
         });
