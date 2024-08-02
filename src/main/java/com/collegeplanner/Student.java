@@ -1,24 +1,16 @@
 package com.collegeplanner;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class Student {
 
-    private int schoolId;
+    private String schoolId;
     private String firstName, lastName, email, password, classification;
     private double gpa;
     private int creditsEarned, creditsAttempted, creditsRemaining;
     private ArrayList<Planner> planners;
 
-    public Student(int id, String firstName, String lastName, String email, String password, String schoolName,
+    public Student(String id, String firstName, String lastName, String email, String password,
                    String classification, double gpa, int creditsEarned, int creditsAttempted, int creditsRemaining,
                    ArrayList<Planner> planners) {
 
@@ -35,11 +27,11 @@ public class Student {
         this.planners = planners;
     }
 
-    public int getSchoolId() {
+    public String getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(String schoolId) {
         this.schoolId = schoolId;
     }
 

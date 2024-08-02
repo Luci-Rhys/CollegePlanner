@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ad3e0ebd-0a41-4e4f-8054-7f8e8d1720f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/collegeplanner/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,23 +129,7 @@
       <workItem from="1720731874556" duration="12905000" />
       <workItem from="1720752606426" duration="300000" />
       <workItem from="1720753387764" duration="2089000" />
-      <workItem from="1720761922599" duration="17900000" />
-    </task>
-    <task id="LOCAL-00004" summary="updated styling to resolve truncated &quot;or&quot; label">
-      <option name="closed" value="true" />
-      <created>1716048942662</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1716048942662</updated>
-    </task>
-    <task id="LOCAL-00005" summary="updated styling links, resolved picture visibility issue, changed sign in label">
-      <option name="closed" value="true" />
-      <created>1716049048603</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1716049048603</updated>
+      <workItem from="1720761922599" duration="33709000" />
     </task>
     <task id="LOCAL-00006" summary="added whitespace for visibility">
       <option name="closed" value="true" />
@@ -523,7 +507,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720735714558</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="resolved invalid input error, added more validation code to create new scene">
+      <option name="closed" value="true" />
+      <created>1721021080636</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1721021080636</updated>
+    </task>
+    <task id="LOCAL-00054" summary="removed isselectionmade method, updated to show error labels and updated validaton for earned hours">
+      <option name="closed" value="true" />
+      <created>1721021182693</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1721021182693</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,8 +553,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added exit functionality, updated perm logo, and removed super call" />
-    <MESSAGE value="added exitStage" />
     <MESSAGE value="deleted temp placeholder logo" />
     <MESSAGE value="resolved dragwindow issue for login by swapping initializations in the constructor and added labels and styling for popup" />
     <MESSAGE value="renamed toolbar selector" />
@@ -578,6 +576,8 @@
     <MESSAGE value="added error labels as parameters and removed unnecessary methods (containsOnly methods)" />
     <MESSAGE value="added &quot;animations&quot; and add'l css to buttons, changed background color for scene" />
     <MESSAGE value="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css" />
-    <option name="LAST_COMMIT_MESSAGE" value="added initmodal for to cancel stage, changed emailTF listener from textProperty to focusProp, and linkstyle for some css" />
+    <MESSAGE value="resolved invalid input error, added more validation code to create new scene" />
+    <MESSAGE value="removed isselectionmade method, updated to show error labels and updated validaton for earned hours" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed isselectionmade method, updated to show error labels and updated validaton for earned hours" />
   </component>
 </project>
