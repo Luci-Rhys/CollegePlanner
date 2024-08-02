@@ -17,18 +17,18 @@ public class Validation{
 
     //Checks if contents of two text fields are equal (case-sensitive)
     public boolean areFieldsEqual(TextField tf1, TextField tf2, Label errLbl){
-        boolean areFieldsEqual;
+        boolean areFieldsEqual = false;
 
         String str1 = tf1.getText();
         String str2 = tf2.getText();
 
-        if(!str1.equals(str2)){
-            areFieldsEqual = false;
-            showLbl(errLbl);
-            invalidInput(tf2);
-        }
-        else {
-            areFieldsEqual = true;
+        if(!str1.isEmpty() && !str2.isEmpty()) {
+            if (!str1.equals(str2)) {
+                showLbl(errLbl);
+                invalidInput(tf2);
+            } else {
+                areFieldsEqual = true;
+            }
         }
 
         return areFieldsEqual;
@@ -61,18 +61,18 @@ public class Validation{
     //Checks if the user provided email fits valid email format
     public boolean isValidEmail(TextField emailTF, Label errLabel){
         String emailAddress = emailTF.getText();
-
         boolean isValid = true;
 
-        //Adds border and displays error when conditions are false
-        try{
-            InternetAddress email = new InternetAddress(emailAddress);
-            email.validate();
-        }
-        catch (AddressException e){
-            isValid = false;
-            invalidInput(emailTF);
-            showLbl(errLabel);
+        if(!emailTF.getText().isEmpty()) {
+            //Adds border and displays error when conditions are false
+            try {
+                InternetAddress email = new InternetAddress(emailAddress);
+                email.validate();
+            } catch (AddressException e) {
+                isValid = false;
+                invalidInput(emailTF);
+                showLbl(errLabel);
+            }
         }
         return isValid;
     }
@@ -80,15 +80,17 @@ public class Validation{
     //Method checks if password is equal to or more than 9 characters and does not contain invalid symbols or characters
     public boolean isPasswordValid(PasswordField pf, Label errLabel){
         boolean isPasswordValid = false;
-        String password = pf.getText();
 
-        //Adds border and displays error when conditions are false
-        if(password.length() >= 9 && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])(?!.*[^\\w~!@#$%^&*]).{9,}$")){
-            isPasswordValid = true;
-        }
-        else {
-            invalidInput(pf);
-            showLbl(errLabel);
+        if(!pf.getText().isEmpty()) {
+            String password = pf.getText();
+
+            //Adds border and displays error when conditions are false
+            if (password.length() >= 9 && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])(?!.*[^\\w~!@#$%^&*]).{9,}$")) {
+                isPasswordValid = true;
+            } else {
+                invalidInput(pf);
+                showLbl(errLabel);
+            }
         }
 
         return isPasswordValid;
@@ -100,28 +102,32 @@ public class Validation{
         double gpa = Double.parseDouble(gpaStr);
         boolean isValidGPA = false;
 
-        //Adds border and displays error when conditions are false
-        if(Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.00 && gpa <= 4.00){
-            isValidGPA = true;
-        }
-        else {
-            invalidInput(gpaTF);
-            showLbl(errLabel);
-        }
+         if(!gpaTF.getText().isEmpty()) {
+             //Adds border and displays error when conditions are false
+             if (Pattern.matches("^[0-9.]+$", gpaStr) && gpa >= 0.00 && gpa <= 4.00) {
+                 isValidGPA = true;
+             } else {
+                 invalidInput(gpaTF);
+                 showLbl(errLabel);
+             }
+         }
 
         return isValidGPA;
     }
 
     //Checks if the number of hours earned is below the number of hours attempted
     public boolean isErnUnderAtt(TextField erndHrsTF, TextField attHrsTF, Label errLabel){
-        int earnedHrs = Integer.parseInt(erndHrsTF.getText());
-        int attemptHrs = Integer.parseInt(attHrsTF.getText());
+        int earnedHrs = Integer.parseInt(erndHrsTF.getText());;
+        int attemptHrs = Integer.parseInt(attHrsTF.getText());;
 
-        //Adds border and displays error when conditions are false
-        if(!(earnedHrs <= attemptHrs)){
-            showLbl(errLabel);
-            invalidInput(erndHrsTF);
-            invalidInput(attHrsTF);
+        if(!erndHrsTF.getText().isEmpty() && !attHrsTF.getText().isEmpty()) {
+
+            //Adds border and displays error when conditions are false
+            if (!(earnedHrs <= attemptHrs)) {
+                showLbl(errLabel);
+                invalidInput(erndHrsTF);
+                invalidInput(attHrsTF);
+            }
         }
 
         return earnedHrs <= attemptHrs;
